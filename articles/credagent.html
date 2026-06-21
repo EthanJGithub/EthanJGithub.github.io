@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CredAgent: a multi-agent loan underwriter built to be audited — Ethan Jones</title>
+<meta name="description" content="A 5-agent LangGraph pipeline that underwrites consumer loans with SHAP-attributed decisions, RAG over CFPB policy, fair-lending testing, and human-in-the-loop checkpoints."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#08090c;--bg-soft:#0e1014;--card:#111319;--card-hover:#161a22;--line:#1e222b;--line-soft:#171b22;--text:#f3f5f8;--muted:#9aa3b2;--muted-dim:#6b7280;--cyan:#22d3ee;--purple:#a855f7;--accent:linear-gradient(135deg,#22d3ee 0%,#7c5cff 55%,#a855f7 100%)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 500px at 80% -10%,rgba(124,92,255,.16),transparent 60%),radial-gradient(800px 480px at 10% 0%,rgba(34,211,238,.12),transparent 55%);pointer-events:none}
+a{color:inherit;text-decoration:none}h1,h2,h3,.logo,.kicker{font-family:'Space Grotesk',sans-serif}
+.grad{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(8,9,12,.72);border-bottom:1px solid var(--line-soft)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#06070a;font-weight:700;font-size:14px}
+.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{color:var(--muted);font-size:14.5px;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.article{max-width:760px;margin:0 auto;padding:0 24px}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin:42px 0 28px;transition:color .2s}.back:hover{color:var(--cyan)}
+.kicker{display:block;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.art-title{font-size:clamp(32px,5.5vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.07;margin-bottom:18px}
+.meta{display:flex;flex-wrap:wrap;gap:10px 18px;color:var(--muted-dim);font-size:14px;align-items:center;margin-bottom:26px}
+.meta .sep{opacity:.4}
+.art-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;padding-bottom:36px;border-bottom:1px solid var(--line-soft)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;font-family:'Space Grotesk'}
+.btn-primary{background:var(--accent);color:#06070a}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(124,92,255,.55)}
+.btn-ghost{border-color:var(--line);color:var(--text)}.btn-ghost:hover{border-color:var(--cyan);background:rgba(34,211,238,.06)}
+.prose{font-size:17px;color:#dde2ea}
+.prose h2{font-size:27px;font-weight:700;letter-spacing:-.015em;margin:46px 0 16px;color:var(--text)}
+.prose h3{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--text)}
+.prose p{margin:0 0 18px;color:#cbd2dc}
+.prose strong{color:var(--text);font-weight:600}
+.prose a{color:var(--cyan);border-bottom:1px solid rgba(34,211,238,.3)}.prose a:hover{border-color:var(--cyan)}
+.prose ul,.prose ol{margin:0 0 18px;padding-left:22px;color:#cbd2dc}.prose li{margin-bottom:9px}
+.prose code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14.5px;background:#15181f;border:1px solid var(--line);border-radius:5px;padding:1.5px 6px;color:#7fe7f5}
+.prose pre{background:#0d0f14;border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;margin:0 0 22px;font-size:13.5px;line-height:1.6}
+.prose pre code{background:none;border:none;padding:0;color:#c8d0db}
+.callout{border:1px solid var(--line);border-left:3px solid var(--cyan);background:var(--card);border-radius:10px;padding:18px 20px;margin:0 0 24px;color:#cbd2dc;font-size:15.5px}
+.callout b{color:var(--text)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 28px}
+.metric{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:18px}
+.metric .n{font-family:'Space Grotesk';font-size:24px;font-weight:700;letter-spacing:-.02em}
+.metric .l{color:var(--muted);font-size:13px;margin-top:3px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 30px}
+.stack span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 10px;background:var(--bg-soft)}
+.more{margin:56px 0 18px;padding-top:36px;border-top:1px solid var(--line-soft)}
+.more .kicker{margin-bottom:18px}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.more-card{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:20px;transition:.2s}.more-card:hover{transform:translateY(-3px);border-color:#2b3140;background:var(--card-hover)}
+.more-card .t{font-size:12px;color:var(--cyan);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.more-card h4{font-size:16px;font-weight:600}
+footer{max-width:760px;margin:0 auto;border-top:1px solid var(--line-soft);padding:30px 24px;color:var(--muted-dim);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:760px){.nav-links{display:none}.metrics,.more-grid{grid-template-columns:1fr}}
+</style></head><body>
+<nav><div class="nav-inner"><a href="../index.html" class="logo"><span class="mark">EJ</span> Ethan Jones</a>
+<div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writing">Writing</a><a href="https://github.com/EthanJGithub" target="_blank" rel="noopener">GitHub ↗</a></div></div></nav>
+<article class="article">
+<a class="back" href="../index.html#writing">← All writing</a>
+<span class="kicker">Build Log · Agentic AI</span>
+<h1 class="art-title">CredAgent: a multi-agent loan underwriter built to be audited</h1>
+<div class="meta"><span>June 2026</span><span class="sep">·</span><span>8 min read</span><span class="sep">·</span><span>CredAgent</span></div>
+<div class="art-cta"><a class="btn btn-primary" href="https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/" target="_blank" rel="noopener">Open live demo ↗</a><a class="btn btn-ghost" href="https://github.com/EthanJGithub/CredAgent" target="_blank" rel="noopener">View code ↗</a></div>
+<div class="prose"><p><strong>CredAgent</strong> underwrites consumer loans end to end with a team of cooperating agents — and it's designed so that every decision it makes can be reproduced, explained, and defended. In lending, a model that can't explain itself is a liability, not an asset. So CredAgent treats <strong>explainability, fairness, and auditability as requirements</strong>, not extras.</p>
+<div class="metrics"><div class="metric"><div class="n grad">5</div><div class="l">cooperating agents</div></div><div class="metric"><div class="n grad">0.76</div><div class="l">XGBoost ROC-AUC</div></div><div class="metric"><div class="n grad">307K</div><div class="l">real loan applications</div></div></div>
+<h2>The pipeline</h2>
+<p>CredAgent is a <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener">LangGraph</a> state machine of five agents, each with one job, passing an explicit shared state forward:</p>
+<pre><code>Ingestion -> Risk Scoring -> Policy Compliance -> Decision -> Audit</code></pre>
+<ul>
+<li><strong>Ingestion</strong> validates and structures the application.</li>
+<li><strong>Risk Scoring</strong> runs an XGBoost model and attributes the score with SHAP.</li>
+<li><strong>Policy Compliance</strong> checks the decision against regulation via RAG over policy text.</li>
+<li><strong>Decision</strong> produces an approve/deny/refer outcome and the adverse-action reasons.</li>
+<li><strong>Audit</strong> writes an immutable record of inputs, model version, prompts, and outputs.</li>
+</ul>
+<p>I chose LangGraph specifically because the transitions are <strong>deterministic and inspectable</strong>. For a regulated workflow you want to know exactly which state produced which output — a graph gives you that; a free-form agent loop does not.</p>
+<h2>The model, and why it's explainable</h2>
+<p>The risk model is an XGBoost classifier trained on the real <strong>307K-row Home Credit dataset</strong> (246K train / 61K validation), reaching a validation <strong>ROC-AUC of 0.76</strong>. Every individual decision is attributed with <strong>SHAP</strong>, so the system can say <em>why</em> a particular applicant was scored the way they were — which is exactly what you need to generate a compliant adverse-action notice.</p>
+<h2>Compliance is the feature</h2>
+<h3>Adverse-action notices from SHAP</h3>
+<p>Under ECOA / the CFPB, a denied applicant is owed specific reasons. CredAgent generates those <strong>directly from the SHAP attributions</strong> — the top contributing factors become the notice — so the explanation a regulator sees is the same signal the model actually used.</p>
+<h3>RAG over CFPB policy</h3>
+<p>The Policy Compliance agent grounds its checks in real regulatory text using a retrieval step over a <strong>ChromaDB</strong> index of CFPB material, rather than relying on the LLM's memory. The decision cites policy it actually retrieved.</p>
+<h3>Fair-lending testing, kept separate from scoring</h3>
+<p>CredAgent runs <strong>disparate-impact testing (the four-fifths rule)</strong> and enforces <strong>prohibited-basis exclusion</strong> — features like sex and education are deliberately kept out of the scoring model. Critically, fairness monitoring is a <em>separate</em> component from the scoring model, so the model is never optimizing against its own fairness check.</p>
+<div class="callout"><b>Design principle.</b> Keep fairness monitoring outside the scoring model. The moment the model can see its own fairness metric, it learns to game it. Separation keeps the audit honest.</div>
+<h2>Human-in-the-loop and durable state</h2>
+<p>Borderline and high-impact decisions are routed to a <strong>human-in-the-loop checkpoint</strong> rather than auto-decided — escalation is a first-class path, not an afterthought. Decisions, model versions, and the exact prompts are persisted to a SQLite store so the system never depends on in-memory-only state, and <strong>PSI-based drift monitoring</strong> watches the production input distribution over time.</p>
+<h2>How it's served</h2>
+<p>A FastAPI backend exposes the pipeline; there's a Streamlit cloud demo for quick access and a React/Vite + Nivo frontend with an "AI Evidence Hub" that surfaces the audit trail. The whole thing is deployed and demoable.</p>
+<h2>Stack</h2>
+<div class="stack"><span>LangGraph</span><span>XGBoost</span><span>SHAP</span><span>RAG</span><span>ChromaDB</span><span>FastAPI</span><span>Streamlit</span><span>React</span><span>Vite</span><span>Nivo</span><span>SQLite</span></div>
+<p>Try the <a href="https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/" target="_blank" rel="noopener">live demo</a> or read the <a href="https://github.com/EthanJGithub/CredAgent" target="_blank" rel="noopener">code</a>.</p></div>
+<div class="more"><span class="kicker">More writing</span><div class="more-grid"><a class="more-card" href="visionlog.html"><div class="t">Computer Vision</div><h4>Real-time YOLO26 in the browser</h4></a><a class="more-card" href="fraudpulse.html"><div class="t">Machine Learning</div><h4>Fraud detection with the honest metric</h4></a></div></div>
+</article>
+<footer><span>© 2026 Ethan Jones · Atlanta, GA</span><a href="../index.html">Home</a></footer>
+</body></html>

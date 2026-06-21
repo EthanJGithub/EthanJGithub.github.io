@@ -125,11 +125,13 @@
 
   /* WRITING */
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
-  .post{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:26px;transition:.25s}
+  .post{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:26px;transition:.25s;color:inherit}
   .post:hover{transform:translateY(-4px);border-color:#2b3140;background:var(--card-hover)}
-  .post .date{font-size:12.5px;color:var(--muted-dim);margin-bottom:12px}
+  .post .date{font-size:12.5px;color:var(--muted-dim);margin-bottom:12px;letter-spacing:.01em}
   .post h3{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
-  .post p{color:var(--muted);font-size:14.5px}
+  .post p{color:var(--muted);font-size:14.5px;flex:1}
+  .post .read{margin-top:16px;color:var(--cyan);font-size:13.5px;font-weight:600;font-family:'Space Grotesk'}
+  .post:hover .read{text-decoration:underline}
 
   /* CONTACT */
   .contact{text-align:center}
@@ -284,23 +286,26 @@
   <div class="wrap">
     <span class="kicker">Writing</span>
     <h2 class="h2">Notes &amp; build logs.</h2>
-    <p class="lead">Short write-ups on what I'm building and what I learned doing it.</p>
+    <p class="lead">Full technical write-ups on each project — the architecture, the decisions, and the results. Click any card to read the article.</p>
     <div class="posts">
-      <div class="post">
-        <div class="date">June 2026</div>
-        <h3>Running YOLO26 entirely in the browser</h3>
-        <p>How VisionLog does real-time detection client-side on the visitor's GPU with onnxruntime-web + WebGPU — no server, no CLIP encoder — and still ships open-vocabulary detection and a fine-tuned PPE model.</p>
-      </div>
-      <div class="post">
-        <div class="date">June 2026</div>
-        <h3>Multi-agent text-to-SQL, safely</h3>
-        <p>An author → guard → execute → answer LangGraph loop with a read-only SQL guard and self-correction, letting anyone "ask the data" over a live detections database without ever exposing a write path.</p>
-      </div>
-      <div class="post">
-        <div class="date">May 2026</div>
-        <h3>The honest metric for fraud</h3>
-        <p>Why FraudPulse reports PR-AUC under a 0.17% fraud rate instead of accuracy — and how a data-onboarding agent flags resampled or mislabeled data before it ever reaches the model.</p>
-      </div>
+      <a class="post" href="articles/visionlog.html">
+        <div class="date">June 2026 · Computer Vision · 9 min</div>
+        <h3>VisionLog: real-time object detection in the browser</h3>
+        <p>How VisionLog runs YOLO26 client-side on WebGPU (~48 fps, no server), ships open-vocabulary detection without a 570 MB CLIP encoder, fine-tunes a domain model, and adds a LangGraph text-to-SQL agent over the detections database.</p>
+        <span class="read">Read article →</span>
+      </a>
+      <a class="post" href="articles/credagent.html">
+        <div class="date">June 2026 · Agentic AI · 8 min</div>
+        <h3>CredAgent: a multi-agent underwriter built to be audited</h3>
+        <p>A 5-agent LangGraph pipeline that underwrites loans with SHAP-attributed decisions, RAG over CFPB policy, four-fifths fair-lending testing, and human-in-the-loop checkpoints — designed so every decision is reproducible.</p>
+        <span class="read">Read article →</span>
+      </a>
+      <a class="post" href="articles/fraudpulse.html">
+        <div class="date">May 2026 · Machine Learning · 7 min</div>
+        <h3>FraudPulse: fraud detection with the honest metric</h3>
+        <p>Why FraudPulse reports PR-AUC (0.88) under a 0.17% fraud rate instead of accuracy, how XGBoost plus IsolationForest cover known and novel fraud, and how an agent self-corrects bad data before it reaches the model.</p>
+        <span class="read">Read article →</span>
+      </a>
     </div>
   </div>
 </section>
