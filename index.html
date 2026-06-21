@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ethan Jones — AI / ML &amp; Software Engineer</title>
+<meta name="description" content="Ethan Jones — AI/ML and software engineer building agentic AI, computer vision, and production machine learning. Three live, deployed projects on real data." />
+<meta property="og:title" content="Ethan Jones — AI / ML & Software Engineer" />
+<meta property="og:description" content="Building agentic AI, computer vision, and production ML — with three live, deployed projects." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#08090c; --bg-soft:#0e1014; --card:#111319; --card-hover:#161a22;
+    --line:#1e222b; --line-soft:#171b22;
+    --text:#f3f5f8; --muted:#9aa3b2; --muted-dim:#6b7280;
+    --cyan:#22d3ee; --purple:#a855f7;
+    --accent:linear-gradient(135deg,#22d3ee 0%,#7c5cff 55%,#a855f7 100%);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(124,92,255,.16), transparent 60%),
+      radial-gradient(800px 480px at 10% 0%, rgba(34,211,238,.12), transparent 55%);
+    pointer-events:none;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1; opacity:.4; pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:64px 64px; mask-image:linear-gradient(180deg,#000,transparent 70%);
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,.logo,.kicker,.nav-cta{font-family:'Space Grotesk',sans-serif}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .grad{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(8,9,12,.72);border-bottom:1px solid var(--line-soft)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#06070a;font-weight:700;font-size:14px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:14.5px;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{padding:8px 16px;border:1px solid var(--line);border-radius:8px;color:var(--text)!important;font-size:14px;font-weight:600;transition:.2s}
+  .nav-cta:hover{border-color:var(--cyan);background:rgba(34,211,238,.07)}
+  .burger{display:none}
+
+  /* HERO */
+  header.hero{padding:96px 0 88px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg-soft);font-size:13px;color:var(--muted);margin-bottom:28px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.15)}
+  header.hero h1{font-size:clamp(42px,7vw,82px);line-height:1.02;font-weight:700;letter-spacing:-.03em;margin-bottom:22px}
+  header.hero .sub{font-size:clamp(17px,2.3vw,21px);color:var(--muted);max-width:680px;margin:0 auto 36px}
+  header.hero .sub b{color:var(--text);font-weight:600}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:10px;font-weight:600;font-size:15px;transition:.2s;border:1px solid transparent}
+  .btn-primary{background:var(--accent);color:#06070a}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px -10px rgba(124,92,255,.6)}
+  .btn-ghost{border-color:var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--cyan);background:rgba(34,211,238,.06);transform:translateY(-2px)}
+
+  /* STAT STRIP */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px}
+  .stat{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:22px 20px;text-align:left}
+  .stat .n{font-family:'Space Grotesk';font-size:30px;font-weight:700;letter-spacing:-.02em}
+  .stat .l{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+  /* SECTION */
+  section{padding:78px 0;border-top:1px solid var(--line-soft)}
+  .kicker{display:block;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+  .h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:18px}
+  .lead{color:var(--muted);font-size:17px;max-width:680px}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start;margin-top:14px}
+  .about-grid p{color:var(--muted);margin-bottom:16px;font-size:16.5px}
+  .about-grid p b{color:var(--text);font-weight:600}
+  .hl{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .hl li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:15px}
+  .hl li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:6px;background:var(--accent);box-shadow:inset 0 0 0 6px var(--card)}
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  .card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:26px;display:flex;flex-direction:column;transition:.25s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--accent);opacity:0;transition:.25s}
+  .card:hover{transform:translateY(-5px);border-color:#2b3140;background:var(--card-hover)}
+  .card:hover::before{opacity:1}
+  .card .ptag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+  .card h3{font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:14.5px;flex:1;margin-bottom:18px}
+  .tech{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+  .tech span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:var(--bg-soft)}
+  .card-links{display:flex;gap:16px}
+  .card-links a{font-size:13.5px;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:6px;transition:.2s}
+  .card-links a.demo{color:var(--cyan)}
+  .card-links a:hover{opacity:.7}
+
+  /* EXPERIENCE */
+  .xp{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px;margin-top:30px}
+  .xp-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:6px}
+  .xp-head h3{font-size:20px;font-weight:600}
+  .xp-head .co{color:var(--purple);font-weight:600}
+  .xp-head .when{color:var(--muted-dim);font-size:14px}
+  .xp ul{list-style:none;margin-top:16px;display:grid;gap:11px}
+  .xp ul li{color:var(--muted);font-size:15px;padding-left:22px;position:relative}
+  .xp ul li::before{content:"▹";position:absolute;left:0;color:var(--cyan)}
+
+  /* SKILLS */
+  .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+  .skill{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:20px}
+  .skill h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-family:'Space Grotesk'}
+  .skill p{color:var(--muted);font-size:14px;line-height:1.7}
+
+  /* WRITING */
+  .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  .post{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:26px;transition:.25s}
+  .post:hover{transform:translateY(-4px);border-color:#2b3140;background:var(--card-hover)}
+  .post .date{font-size:12.5px;color:var(--muted-dim);margin-bottom:12px}
+  .post h3{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+  .post p{color:var(--muted);font-size:14.5px}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact .h2{margin:0 auto 14px}
+  .contact .lead{margin:0 auto 30px}
+  .links-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .link-chip{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border:1px solid var(--line);border-radius:10px;font-weight:600;font-size:15px;color:var(--text);transition:.2s;background:var(--card)}
+  .link-chip:hover{border-color:var(--cyan);transform:translateY(-2px);background:rgba(34,211,238,.06)}
+
+  footer{border-top:1px solid var(--line-soft);padding:34px 0;color:var(--muted-dim);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:860px){
+    .nav-links{display:none}
+    .about-grid,.proj-grid,.skills,.posts,.stats{grid-template-columns:1fr}
+    .stats{gap:14px}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo"><span class="mark">EJ</span> Ethan Jones</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#writing">Writing</a>
+      <a href="https://github.com/EthanJGithub" target="_blank" rel="noopener" class="nav-cta">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header class="hero">
+  <div class="wrap">
+    <span class="pill"><span class="dot"></span> Open to AI / ML &amp; software engineering roles</span>
+    <h1>Ethan Jones<br><span class="grad">builds intelligent systems.</span></h1>
+    <p class="sub">AI/ML and software engineer specializing in <b>agentic AI</b>, <b>computer vision</b>, and <b>production machine learning</b> — shipped end to end, with <b>three live, deployed apps</b> on real data.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="https://linkedin.com/in/ethan-jones-cs" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="mailto:ethan.jones2485@gmail.com" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n grad">3</div><div class="l">live, deployed apps</div></div>
+      <div class="stat"><div class="n grad">YOLO26</div><div class="l">real-time CV in-browser</div></div>
+      <div class="stat"><div class="n grad">LangGraph</div><div class="l">multi-agent pipelines</div></div>
+      <div class="stat"><div class="n grad">B.S. CS</div><div class="l">ABET-accredited, GPA 3.44</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <span class="kicker">About</span>
+    <h2 class="h2">Engineer who ships — model to production.</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm an AI/ML and software engineer based in Atlanta, GA. I design, train, and deploy <b>agentic AI systems</b>, <b>computer-vision models</b>, and <b>cloud-native machine learning</b> — and I take them all the way to production, not just a notebook.</p>
+        <p>My work pairs modeling depth with real engineering: multi-agent LangGraph pipelines with guardrails and audit trails, real-time YOLO/SAM detection and tracking, fine-tuning and rigorous evaluation, and full-stack delivery on AWS with FastAPI and React. I care about systems that are <b>reliable, explainable, and auditable</b> — built to be trusted.</p>
+        <p>Right now I build production CV and agentic AI at <b>Credence</b>, and I keep a public portfolio of deployed projects so the work speaks for itself.</p>
+      </div>
+      <ul class="hl">
+        <li>Production computer vision: YOLO / YOLOe, SAM / SAMURAI / SAM3, real-time detection, segmentation &amp; tracking.</li>
+        <li>Agentic AI: multi-agent orchestration, RAG, text-to-SQL agents, intent classification, human-in-the-loop.</li>
+        <li>Production ML: XGBoost, IsolationForest, SHAP, fine-tuning, evaluation (mAP, PR curves).</li>
+        <li>Full-stack &amp; cloud: FastAPI, React / Vite, Node.js, AWS (Lambda, Step Functions), Docker, PostgreSQL.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="kicker">Portfolio</span>
+    <h2 class="h2">Three live, deployed projects.</h2>
+    <p class="lead">Each one runs on real data and is demoable in your browser right now.</p>
+    <div class="proj-grid">
+
+      <div class="card">
+        <div class="ptag">Computer Vision · Agentic</div>
+        <h3>VisionLog</h3>
+        <p>Browser-native real-time object detection — YOLO26 on WebGPU (~48 fps) — with open-vocabulary detection, a domain fine-tune (Construction-PPE, mAP@50 0.46), a full evaluation suite, and detections logged to PostgreSQL. Includes a LangGraph text-to-SQL agent over the detections database.</p>
+        <div class="tech"><span>YOLO26</span><span>ONNX / WebGPU</span><span>PyTorch</span><span>LangGraph</span><span>FastAPI</span><span>PostgreSQL</span><span>React/Vite</span></div>
+        <div class="card-links">
+          <a class="demo" href="https://vision-log-lilac.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/EthanJGithub/VisionLog" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ptag">Agentic AI · Credit</div>
+        <h3>CredAgent</h3>
+        <p>A 5-agent LangGraph pipeline that underwrites consumer loans end to end — Ingestion → Risk Scoring → Policy Compliance → Decision → Audit — with human-in-the-loop checkpoints, RAG over policy, an immutable audit trail, and an XGBoost risk model (ROC-AUC 0.76) attributed with SHAP.</p>
+        <div class="tech"><span>LangGraph</span><span>RAG</span><span>ChromaDB</span><span>XGBoost</span><span>SHAP</span><span>FastAPI</span><span>React/Vite</span></div>
+        <div class="card-links">
+          <a class="demo" href="https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/EthanJGithub/CredAgent" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ptag">Machine Learning · Fraud</div>
+        <h3>FraudPulse</h3>
+        <p>A real-time fraud-detection service combining supervised XGBoost with unsupervised IsolationForest — reported on PR-AUC under extreme class imbalance (0.88 at a 0.17% fraud rate). Ships a FastAPI scoring API, a live stream simulator, an operations dashboard, and an agentic data-onboarding agent.</p>
+        <div class="tech"><span>XGBoost</span><span>IsolationForest</span><span>SHAP</span><span>FastAPI</span><span>React/Vite</span><span>Agentic</span></div>
+        <div class="card-links">
+          <a class="demo" href="https://fraud-pulse.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/EthanJGithub/FraudPulse" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="kicker">Experience</span>
+    <h2 class="h2">Where I build.</h2>
+    <div class="xp">
+      <div class="xp-head">
+        <h3>AI / ML &amp; Software Engineer <span class="co">· Credence</span></h3>
+        <span class="when">Apr 2025 — Present · Warner Robins, GA</span>
+      </div>
+      <ul>
+        <li>Deployed production computer-vision pipelines with custom-trained YOLO / YOLOe for small-object detection; integrated open-vocabulary prompting into SAM and YOLOe, expanding detection coverage from 40% to 100%.</li>
+        <li>Built real-time segmentation and tracking (SAM, SAMURAI), upgraded SAM→SAM3 for a 70% frame-rate gain, and cut stream-init latency by 2,500ms via profiling on a 30fps pipeline.</li>
+        <li>Architected production LLM agent systems on AWS (Lambda, Step Functions, EventBridge) with intent classification, semantic guardrails, and audit logging.</li>
+        <li>Built a documentation-interpretation agent and a legacy-modernization system (COBOL→Java) that infers business logic and generates modern equivalents.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="kicker">Toolkit</span>
+    <h2 class="h2">What I work with.</h2>
+    <div class="skills">
+      <div class="skill"><h4>AI / Agents</h4><p>LangChain, LangGraph, multi-agent systems, RAG, text-to-SQL, ChromaDB, LLM orchestration, guardrails, HITL</p></div>
+      <div class="skill"><h4>Computer Vision</h4><p>YOLO26 / YOLOe, SAM / SAMURAI / SAM3, detection, segmentation, tracking, fine-tuning, ONNX / WebGPU</p></div>
+      <div class="skill"><h4>ML &amp; Data</h4><p>Python, PyTorch, TensorFlow, scikit-learn, XGBoost, SHAP, evaluation (mAP, PR curves), SQL, PostgreSQL</p></div>
+      <div class="skill"><h4>Engineering</h4><p>FastAPI, React, Vite, Node.js, Java, C/C++, AWS, Docker, CI/CD, REST, event-driven systems</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <span class="kicker">Writing</span>
+    <h2 class="h2">Notes &amp; build logs.</h2>
+    <p class="lead">Short write-ups on what I'm building and what I learned doing it.</p>
+    <div class="posts">
+      <div class="post">
+        <div class="date">June 2026</div>
+        <h3>Running YOLO26 entirely in the browser</h3>
+        <p>How VisionLog does real-time detection client-side on the visitor's GPU with onnxruntime-web + WebGPU — no server, no CLIP encoder — and still ships open-vocabulary detection and a fine-tuned PPE model.</p>
+      </div>
+      <div class="post">
+        <div class="date">June 2026</div>
+        <h3>Multi-agent text-to-SQL, safely</h3>
+        <p>An author → guard → execute → answer LangGraph loop with a read-only SQL guard and self-correction, letting anyone "ask the data" over a live detections database without ever exposing a write path.</p>
+      </div>
+      <div class="post">
+        <div class="date">May 2026</div>
+        <h3>The honest metric for fraud</h3>
+        <p>Why FraudPulse reports PR-AUC under a 0.17% fraud rate instead of accuracy — and how a data-onboarding agent flags resampled or mislabeled data before it ever reaches the model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="kicker">Contact</span>
+    <h2 class="h2">Let's build something.</h2>
+    <p class="lead">I'm open to AI/ML and software engineering roles. The fastest way to know my work is to open a demo — or just say hello.</p>
+    <div class="links-row">
+      <a class="link-chip" href="mailto:ethan.jones2485@gmail.com">✉ Email</a>
+      <a class="link-chip" href="https://linkedin.com/in/ethan-jones-cs" target="_blank" rel="noopener">in · LinkedIn ↗</a>
+      <a class="link-chip" href="https://github.com/EthanJGithub" target="_blank" rel="noopener">⌘ GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap nav-inner" style="height:auto">
+    <span>© 2026 Ethan Jones · Atlanta, GA</span>
+    <span>Built and deployed end to end.</span>
+  </div>
+</footer>
+
+<script>
+  // subtle scroll-reveal
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='none';io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('section .card, section .post, section .skill, section .stat, .xp, .about-grid').forEach(el=>{el.style.opacity=0;el.style.transform='translateY(16px)';el.style.transition='opacity .6s ease, transform .6s ease';io.observe(el)});
+</script>
+</body>
+</html>
