@@ -3,58 +3,10 @@
 <meta name="description" content="How VisionLog runs YOLO26 client-side on WebGPU with open-vocabulary detection, a domain fine-tune, an evaluation suite, and a LangGraph text-to-SQL agent."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>
-:root{--bg:#08090c;--bg-soft:#0e1014;--card:#111319;--card-hover:#161a22;--line:#1e222b;--line-soft:#171b22;--text:#f3f5f8;--muted:#9aa3b2;--muted-dim:#6b7280;--cyan:#22d3ee;--purple:#a855f7;--accent:linear-gradient(135deg,#22d3ee 0%,#7c5cff 55%,#a855f7 100%)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 500px at 80% -10%,rgba(124,92,255,.16),transparent 60%),radial-gradient(800px 480px at 10% 0%,rgba(34,211,238,.12),transparent 55%);pointer-events:none}
-a{color:inherit;text-decoration:none}h1,h2,h3,.logo,.kicker{font-family:'Space Grotesk',sans-serif}
-.grad{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(8,9,12,.72);border-bottom:1px solid var(--line-soft)}
-.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
-.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#06070a;font-weight:700;font-size:14px}
-.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{color:var(--muted);font-size:14.5px;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text)}
-.article{max-width:760px;margin:0 auto;padding:0 24px}
-.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin:42px 0 28px;transition:color .2s}.back:hover{color:var(--cyan)}
-.kicker{display:block;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
-.art-title{font-size:clamp(32px,5.5vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.07;margin-bottom:18px}
-.meta{display:flex;flex-wrap:wrap;gap:10px 18px;color:var(--muted-dim);font-size:14px;align-items:center;margin-bottom:26px}
-.meta .sep{opacity:.4}
-.art-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;padding-bottom:36px;border-bottom:1px solid var(--line-soft)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;font-family:'Space Grotesk'}
-.btn-primary{background:var(--accent);color:#06070a}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(124,92,255,.55)}
-.btn-ghost{border-color:var(--line);color:var(--text)}.btn-ghost:hover{border-color:var(--cyan);background:rgba(34,211,238,.06)}
-.prose{font-size:17px;color:#dde2ea}
-.prose h2{font-size:27px;font-weight:700;letter-spacing:-.015em;margin:46px 0 16px;color:var(--text)}
-.prose h3{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--text)}
-.prose p{margin:0 0 18px;color:#cbd2dc}
-.prose strong{color:var(--text);font-weight:600}
-.prose a{color:var(--cyan);border-bottom:1px solid rgba(34,211,238,.3)}.prose a:hover{border-color:var(--cyan)}
-.prose ul,.prose ol{margin:0 0 18px;padding-left:22px;color:#cbd2dc}.prose li{margin-bottom:9px}
-.prose code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14.5px;background:#15181f;border:1px solid var(--line);border-radius:5px;padding:1.5px 6px;color:#7fe7f5}
-.prose pre{background:#0d0f14;border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;margin:0 0 22px;font-size:13.5px;line-height:1.6}
-.prose pre code{background:none;border:none;padding:0;color:#c8d0db}
-.callout{border:1px solid var(--line);border-left:3px solid var(--cyan);background:var(--card);border-radius:10px;padding:18px 20px;margin:0 0 24px;color:#cbd2dc;font-size:15.5px}
-.callout b{color:var(--text)}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 28px}
-.metric{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:18px}
-.metric .n{font-family:'Space Grotesk';font-size:24px;font-weight:700;letter-spacing:-.02em}
-.metric .l{color:var(--muted);font-size:13px;margin-top:3px}
-.stack{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 30px}
-.stack span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 10px;background:var(--bg-soft)}
-.more{margin:56px 0 18px;padding-top:36px;border-top:1px solid var(--line-soft)}
-.more .kicker{margin-bottom:18px}
-.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.more-card{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:20px;transition:.2s}.more-card:hover{transform:translateY(-3px);border-color:#2b3140;background:var(--card-hover)}
-.more-card .t{font-size:12px;color:var(--cyan);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-.more-card h4{font-size:16px;font-weight:600}
-footer{max-width:760px;margin:0 auto;border-top:1px solid var(--line-soft);padding:30px 24px;color:var(--muted-dim);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-@media(max-width:760px){.nav-links{display:none}.metrics,.more-grid{grid-template-columns:1fr}}
-</style></head><body>
-<nav><div class="nav-inner"><a href="../index.html" class="logo"><span class="mark">EJ</span> Ethan Jones</a>
+<link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/article.css"/></head><body class="article-page"><a class="skip-link" href="#article">Skip to article</a>
+<nav><div class="nav-inner"><a href="../index.html" class="logo">ethan<span class="logo-light">jones</span><span class="logo-dot">.</span></a>
 <div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writing">Writing</a><a href="https://github.com/EthanJGithub" target="_blank" rel="noopener">GitHub ↗</a></div></div></nav>
-<article class="article">
+<article class="article" id="article">
 <a class="back" href="../index.html#writing">← All writing</a>
 <span class="kicker">Build Log · Computer Vision</span>
 <h1 class="art-title">VisionLog: real-time object detection that runs entirely in your browser</h1>

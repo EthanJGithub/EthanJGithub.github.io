@@ -1,0 +1,123 @@
+(() => {
+  'use strict';
+  const menu = document.querySelector('.menu-toggle');
+  const navigation = document.querySelector('#nav-links');
+  const closeMenu = () => { menu.setAttribute('aria-expanded', 'false'); navigation.classList.remove('is-open'); };
+  menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); navigation.classList.toggle('is-open', open); });
+  navigation.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
+  const projects = {
+    vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'DETECTION → TRACKING → STRUCTURED DATA', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
+    credit: { category: '02 / AGENTIC AI', heading: 'Decisions with<br>a paper trail.', description: 'Five agents take a loan from ingestion to audit. Policy retrieval, SHAP explanations, and human checkpoints make each decision traceable.', metric: '0.76', label: 'RISK MODEL ROC-AUC', caption: 'INGESTION → RISK → POLICY → DECISION → AUDIT', demo: 'https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/', alt: 'Illustrative five-agent credit underwriting pipeline' },
+    fraud: { category: '03 / MACHINE LEARNING', heading: 'Find the signal.<br>Catch the anomaly.', description: 'XGBoost and IsolationForest work together to identify known and novel fraud, with a scoring API, stream simulator, and operations dashboard.', metric: '0.88', label: 'PR-AUC AT 0.17% FRAUD RATE', caption: 'TRANSACTIONS → SCORING → ANOMALY SIGNALS', demo: 'https://fraud-pulse.vercel.app', alt: 'Illustrative transaction stream with highlighted anomaly signals' }
+  };
+  let selected = 'vision';
+  const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  const canvas = document.querySelector('#system-canvas');
+  const context = canvas.getContext('2d');
+  const panel = document.querySelector('#lab-panel');
+  function select(tab) {
+    selected = tab.dataset.project;
+    const project = projects[selected];
+    tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', tab.id);
+    document.querySelector('#lab-category').textContent = project.category;
+    document.querySelector('#lab-heading').innerHTML = project.heading;
+    document.querySelector('#lab-description').textContent = project.description;
+    document.querySelector('#lab-metric').textContent = project.metric;
+    document.querySelector('#lab-metric-label').textContent = project.label;
+    document.querySelector('#visual-caption').textContent = project.caption;
+    document.querySelector('#lab-demo').href = project.demo;
+    canvas.setAttribute('aria-label', project.alt);
+    draw();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next !== undefined) { event.preventDefault(); tabs[next].focus(); select(tabs[next]); }
+    });
+  });
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = reducedMotion.matches, visible = true, tick = 0, last = 0, frame = null;
+  const pause = document.querySelector('#motion-toggle');
+  function updatePause() { pause.setAttribute('aria-pressed', String(paused)); pause.innerHTML = paused ? 'Play animation <span aria-hidden="true">▷</span>' : 'Pause animation <span aria-hidden="true">Ⅱ</span>'; }
+  pause.addEventListener('click', () => { paused = !paused; updatePause(); schedule(); });
+  reducedMotion.addEventListener('change', event => { paused = event.matches; updatePause(); schedule(); });
+  updatePause();
+  let width = 0, height = 0;
+  function resize() {
+    const rect = canvas.getBoundingClientRect(); width = rect.width; height = rect.height;
+    const ratio = Math.min(devicePixelRatio || 1, 2); canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+    if (context) context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+  function line(x1, y1, x2, y2, color = '#26372e') { context.strokeStyle = color; context.lineWidth = 1; context.beginPath(); context.moveTo(x1, y1); context.lineTo(x2, y2); context.stroke(); }
+  function text(value, x, y, size = 9, color = '#819b8a') { context.font = `${size}px Consolas, monospace`; context.fillStyle = color; context.fillText(value, x, y); }
+  function box(x, y, w, h, label, color) {
+    context.fillStyle = color + '0a'; context.fillRect(x, y, w, h);
+    context.strokeStyle = color + '70'; context.strokeRect(x, y, w, h);
+    for (const [cx, cy, sx, sy] of [[x,y,1,1],[x+w,y,-1,1],[x,y+h,1,-1],[x+w,y+h,-1,-1]]) { line(cx,cy,cx+sx*9,cy,color); line(cx,cy,cx,cy+sy*9,color); }
+    context.fillStyle = color; context.fillRect(x,y-18,Math.min(w, label.length*5.5+12),18);
+    text(label,x+6,y-6,9,'#0c1811');
+  }
+  function vision() {
+    const baseline = height * .79;
+    // A schematic scene, intentionally distinct from model inference or footage.
+    for (let i = 0; i < 9; i++) { const x = width*.07+i*width*.1; const h = 25+(Math.sin(i*8)+1)*36; context.fillStyle='#16241d'; context.fillRect(x,baseline-h,width*.07,h); }
+    line(25,baseline,width-25,baseline,'#35513f');
+    const objects = [{x:.16,y:.33,w:.15,h:.4,c:'#c1edab',label:'PERSON · 01'},{x:.49,y:.47,w:.28,h:.24,c:'#75beb0',label:'VEHICLE · 02'},{x:.78,y:.29,w:.10,h:.45,c:'#c1edab',label:'PERSON · 03'}];
+    objects.forEach((o,i) => {
+      const x = width*(o.x+Math.sin(tick*.45+i*2)*.022), y=height*o.y, w=width*o.w, h=height*o.h;
+      if (i !== 1) { context.fillStyle='#47644e60'; context.beginPath(); context.arc(x+w/2,y+h*.21,w*.14,0,Math.PI*2); context.fill(); context.fillRect(x+w*.31,y+h*.36,w*.38,h*.35); line(x+w*.4,y+h*.65,x+w*.29,y+h*.92,'#47644e'); line(x+w*.6,y+h*.65,x+w*.71,y+h*.92,'#47644e'); }
+      else { context.fillStyle='#33554b70'; context.fillRect(x+w*.1,y+h*.4,w*.8,h*.35); context.fillRect(x+w*.3,y+h*.2,w*.4,h*.25); }
+      box(x,y,w,h,o.label,o.c);
+      context.setLineDash([2,5]); line(x+w/2,y+h,width*.46,height*.91,'#47644e'); context.setLineDash([]);
+    });
+    text('YOLO26 / ONNX',25,height-43,9,'#c1edab'); text('OBJECTS → POSTGRESQL → LANGGRAPH',width*.48,height-43,width<450?7:9);
+    const scan = 60 + ((tick*30) % (height-100)); line(20,scan,width-20,scan,'#c1edab18');
+  }
+  function credit() {
+    const labels=['INGEST','RISK','POLICY','DECIDE','AUDIT'];
+    const node = Math.min(72,width*.135), gap=(width-48-node*5)/4, y=height*.45;
+    labels.forEach((label,i) => {
+      const x=24+i*(node+gap), active = Math.floor(tick*.9)%5===i;
+      if(i<4) line(x+node,y+node/2,x+node+gap,y+node/2,'#526d53');
+      context.fillStyle=active?'#253c27':'#131e18'; context.fillRect(x,y,node,node);
+      context.strokeStyle=active?'#c1edab':'#38503c'; context.strokeRect(x,y,node,node);
+      text(`0${i+1}`,x+node*.35,y+node*.5,16,active?'#c1edab':'#849d85');
+      text(label,x+2,y+node+20,width<450?8:10);
+      if(i===2){line(x+node/2,y,x+node/2,y-32);text('HUMAN REVIEW',Math.max(25,x-15),y-43,9,'#c1edab');}
+    });
+    line(24,height*.83,width-24,height*.83);text('POLICY RETRIEVAL',24,height*.9,9);text('IMMUTABLE AUDIT TRAIL',width*.52,height*.9,width<450?8:9,'#c1edab');
+  }
+  function fraud() {
+    const left=28, right=width-28, top=height*.27, bottom=height*.77;
+    for(let i=0;i<4;i++) line(left,top+i*(bottom-top)/3,right,top+i*(bottom-top)/3);
+    const count=45;
+    for(let i=0;i<count;i++) {
+      const anomalous=i===12||i===33, x=left+i*(right-left)/count;
+      const value=anomalous?.85:.12+Math.abs(Math.sin(i*7.8+tick*.6))*.20;
+      context.fillStyle=anomalous?'#c1edab':'#416657';context.fillRect(x,bottom-value*(bottom-top),Math.max(2,(right-left)/count-4),value*(bottom-top));
+      if(anomalous) { context.beginPath(); context.arc(x+2,bottom-value*(bottom-top)-10,3,0,Math.PI*2);context.fill(); }
+    }
+    context.setLineDash([4,5]);line(left,top+(bottom-top)*.36,right,top+(bottom-top)*.36,'#b2c493');context.setLineDash([]);
+    text('ANOMALY SIGNAL',left,top-16,9,'#c1edab');text('XGBOOST + ISOLATIONFOREST',left,bottom+29,width<450?8:10);text('SYNTHETIC STREAM',right-120,bottom+49,9);
+  }
+  function draw() {
+    if(!context || !width) return;
+    context.clearRect(0,0,width,height);
+    for(let x=20;x<width;x+=26) for(let y=20;y<height;y+=26) {context.fillStyle='#2b3e3065';context.fillRect(x,y,1,1);}
+    if(selected==='vision')vision(); else if(selected==='credit')credit();else fraud();
+  }
+  function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
+  function schedule() { if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
+  new ResizeObserver(resize).observe(canvas);
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(canvas);
+  document.addEventListener('visibilitychange',schedule);
+  resize();schedule();
+})();
