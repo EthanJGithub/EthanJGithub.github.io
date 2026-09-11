@@ -18,7 +18,8 @@
   let detectionFrames = [];
   fetch('assets/visionlog-motion.json').then(r => r.json()).then(data => { detectionFrames = data.frames; updateFrame(video.currentTime); }).catch(() => {});
   function updateFrame(time) { const record = detectionFrames[Math.min(detectionFrames.length - 1, Math.floor((time + .00001) * 10))]; if (record) document.querySelector('#frame-count').textContent = String(record.detections.length).padStart(2, '0'); }
-  if ('requestVideoFrameCallback' in video) { const onFrame = (_, metadata) => { updateFrame(metadata.mediaTime); video.requestVideoFrameCallback(onFrame); }; video.requestVideoFrameCallback(onFrame); } else video.addEventListener('timeupdate', () => updateFrame(video.currentTime));
+  if ('requestVideoFrameCallback' in video) { const onFrame = (_, metadata) => { updateFrame(video.paused ? video.currentTime : metadata.mediaTime); video.requestVideoFrameCallback(onFrame); }; video.requestVideoFrameCallback(onFrame); } else video.addEventListener('timeupdate', () => updateFrame(video.currentTime));
+  video.addEventListener('seeked', () => updateFrame(video.currentTime));
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const canvas = document.querySelector('#system-canvas');
   const context = canvas.getContext('2d');
@@ -28,8 +29,9 @@
     const project = projects[selected];
     document.querySelector('#lab-visual').dataset.project = selected;
     document.querySelector('#real-output').hidden = selected !== 'vision';
+    document.querySelector('#sentinel-graphic').hidden = selected !== 'sentinel';
     document.querySelector('#motion-toggle').hidden = false;
-    document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'FRAME-BY-FRAME INFERENCE &middot; PEDESTRIANS &middot; <a href="https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi" target="_blank" rel="noopener">SOURCE &#8599;</a>' : 'ILLUSTRATIVE SYSTEM VIEW · SYNTHETIC DATA';
+    document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'FRAME-BY-FRAME INFERENCE &middot; PEDESTRIANS &middot; <a href="https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi" target="_blank" rel="noopener">SOURCE &#8599;</a>' : 'SYSTEM ARCHITECTURE';
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tab.id);
     document.querySelector('#lab-category').textContent = project.category;
@@ -56,7 +58,7 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reducedMotion.matches, visible = true, tick = 0, last = 0, frame = null;
   const pause = document.querySelector('#motion-toggle');
-  function updatePause() { pause.setAttribute('aria-pressed', String(paused)); pause.innerHTML = paused ? 'Play animation <span aria-hidden="true">▷</span>' : 'Pause animation <span aria-hidden="true">Ⅱ</span>'; }
+  function updatePause() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused); pause.setAttribute('aria-pressed', String(paused)); pause.innerHTML = paused ? 'Play animation <span aria-hidden="true">▷</span>' : 'Pause animation <span aria-hidden="true">Ⅱ</span>'; }
   pause.addEventListener('click', () => { paused = !paused; updatePause(); schedule(); });
   reducedMotion.addEventListener('change', event => { paused = event.matches; updatePause(); schedule(); });
   updatePause();
@@ -101,7 +103,7 @@
       if(anomalous) { context.beginPath(); context.arc(x+2,bottom-value*(bottom-top)-10,3,0,Math.PI*2);context.fill(); }
     }
     context.setLineDash([4,5]);line(left,top+(bottom-top)*.36,right,top+(bottom-top)*.36,'#b2c493');context.setLineDash([]);
-    text('ANOMALY SIGNAL',left,top-16,9,'#c1edab');text('XGBOOST + ISOLATIONFOREST',left,bottom+29,width<450?8:10);text('SYNTHETIC STREAM',right-120,bottom+49,9);
+    text('ANOMALY SIGNAL',left,top-16,9,'#c1edab');text('XGBOOST + ISOLATIONFOREST',left,bottom+29,width<450?8:10);text('TRANSACTION SIGNALS',right-120,bottom+49,9);
   }
   function draw() {
     if(!context || !width) return;
@@ -110,7 +112,7 @@
     if(selected==='vision')return; else if(selected==='credit'||selected==='sentinel')credit();else fraud();
   }
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
-  function schedule() { if (selected === 'vision' && !paused && visible && !document.hidden) video.play().catch(() => { paused = true; updatePause(); }); else video.pause(); if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
+  function schedule() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused || !visible || document.hidden || selected !== 'sentinel'); if (selected === 'vision' && !paused && visible && !document.hidden) video.play().catch(() => { paused = true; updatePause(); }); else video.pause(); if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
   new ResizeObserver(resize).observe(canvas);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(document.querySelector('#lab-visual'));
   document.addEventListener('visibilitychange',schedule);

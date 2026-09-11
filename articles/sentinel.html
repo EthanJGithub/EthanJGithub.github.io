@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sentinel: procurement agents with evidence and an approval gate — Ethan Jones</title>
+<meta name="description" content="Inside a senior-care procurement system: LangGraph planning, a C# catalog, citation-grounded compliance, budget loops, and human approval."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/article.css"/></head><body class="article-page"><a class="skip-link" href="#article">Skip to article</a>
+<nav><div class="nav-inner"><a href="../index.html" class="logo">ethan<span class="logo-light">jones</span><span class="logo-dot">.</span></a>
+<div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writing">Writing</a><a href="https://github.com/EthanJGithub" target="_blank" rel="noopener">GitHub ↗</a></div></div></nav>
+<article class="article" id="article">
+<a class="back" href="../index.html#writing">← All writing</a>
+<span class="kicker">Build Log &middot; Senior Healthcare</span>
+<h1 class="art-title">Sentinel: procurement agents with evidence and an approval gate</h1>
+<div class="meta"><span>September 2026</span><span class="sep">&middot;</span><span>8 min read</span><span class="sep">&middot;</span><span>Sentinel</span></div>
+<div class="art-cta"><a class="btn btn-primary" href="https://sentinel-console-gamma.vercel.app" target="_blank" rel="noopener">Open live console &#8599;</a><a class="btn btn-ghost" href="https://github.com/EthanJGithub/Sentinel" target="_blank" rel="noopener">View code &#8599;</a></div>
+<div class="prose">
+<p>A facility manager needs to open a 30-bed memory-care wing in 60 days. There is a $480,000 equipment budget, a purchasing contract, and a set of room-specific requirements. A useful assistant has to turn that request into an equipment plan, explain the selections, check supporting evidence, and preserve a clear point where a person decides whether to order.</p>
+<p><strong>Sentinel</strong> is my implementation of that workflow. It combines a Python agent graph, a C# catalog and ordering service, TypeScript tools, and a React operator console. The interesting part is how those pieces constrain one another: language models can help interpret a request, but prices come from the catalog, compliance findings need evidence, and placing an order requires an authorized human.</p>
+<div class="metrics"><div class="metric"><div class="n">5</div><div class="l">agent stages</div></div><div class="metric"><div class="n">3</div><div class="l">application languages</div></div><div class="metric"><div class="n">12</div><div class="l">golden evaluation scenarios</div></div></div>
+<h2>Start with a workflow people can inspect</h2>
+<p>The core is a <strong>LangGraph state machine</strong>: Planner, Sourcing, Compliance, Budget, and Audit. Shared state carries the facility specification, room breakdown, equipment lines, findings, substitutions, budget report, and audit entries. Each node has a narrow responsibility, and the routing code makes the next step explicit.</p>
+<pre><code>Facility request
+    |
+ Planner -> Sourcing -> Compliance -> Budget -> Audit
+                ^           |           |        |
+                +-----------+-----------+        v
+                   bounded re-source loops   AWAITING_APPROVAL
+                                                 |
+                                          Human review
+                                                 |
+                                          Catalog order</code></pre>
+<p>The graph is not a straight line. Compliance can request a replacement for a problematic item. Budget can propose less expensive alternatives and send the cart back through sourcing. Those alternatives are checked again before the graph finishes. The loop count is bounded so the system cannot spend indefinitely trying to satisfy an impossible request.</p>
+<p>This distinction matters when a budget is infeasible. The report needs to preserve the shortfall. Quietly dropping required equipment to make the total look acceptable would produce a misleading plan.</p>
+<h2>Keep the catalog in charge of products and prices</h2>
+<p>The <strong>ASP.NET Core service</strong> owns catalog search, contract pricing, substitutions, stock lookup, and order creation. The agent talks to it through typed tool calls. It does not invent a product SKU or calculate a contract discount from a language-model response.</p>
+<p>Sourcing turns the planner's room and category requirements into candidate equipment lines. Pricing is resolved through the catalog's contract endpoints. The resulting cart retains quantities, unit prices, contract identifiers, and list-price comparisons so the console can explain the spend.</p>
+<p>The project uses a representative senior-care catalog and modeled pricing to exercise this integration. The architectural boundary is the important part: an existing purchasing system can remain the system of record while an agent coordinates the work around it.</p>
+<h2>Compliance needs a third answer: abstain</h2>
+<p>A binary pass/fail interface encourages certainty where the available evidence may not justify it. Sentinel uses three outcomes: <strong>PASS, VIOLATION, and ABSTAIN</strong>. Missing product attributes and missing regulatory support are reasons to request review, rather than reasons to invent a positive or negative finding.</p>
+<p>The TypeScript MCP tool surface exposes <code>reg_search</code>, <code>validate_item</code>, <code>validate_layout</code>, and <code>cost_calc</code>. Inputs and outputs have Zod schemas; the Python graph uses Pydantic models, and the C# service uses DTOs. Those boundaries make malformed tool results visible before they silently contaminate the next stage.</p>
+<h3>Rules establish the first layer of evidence</h3>
+<p>Deterministic attribute rules reference entries in the project's regulation corpus. The corpus includes public physical-environment material and life-safety references relevant to the sample scenarios. When an explicit attribute violates a modeled rule, the finding carries its rule identifier and citation. If an attribute is absent, the tool treats the condition as not assessable.</p>
+<h3>Retrieved text constrains the language-model explanation</h3>
+<p>For retrieval-backed findings, the explanation has to clear a grounding gate: the retrieved passage must support the claim. Unsupported output becomes an abstention with a gate-blocked marker. The console displays the verdict, rationale, source reference, and supporting text together, so an operator can inspect the basis of a recommendation.</p>
+<div class="callout"><b>The central contract:</b> a compliance assertion needs supporting evidence. An abstention is an actionable result: it tells the reviewer exactly where the system could not establish the answer.</div>
+<h2>A planted violation makes the behavior testable</h2>
+<p>One built-in scenario introduces a bedside-only call station into a memory-care equipment request. The item has an explicit attribute mismatch in the modeled scenario. The compliance stage flags it, attaches the relevant corpus reference, and can propose a replacement from the catalog.</p>
+<p>That gives the demo a concrete engineering question: does the system catch the planted problem, cite the expected source, and retain the remaining plan? Other scenarios exercise egress-door attributes, bed safety, cleanability, flooring, and tight budgets. Clean carts are equally important: a system that marks everything as a violation can look cautious while creating unusable work for operators.</p>
+<h2>Approval is enforced beyond the interface</h2>
+<p>The Audit node finalizes the plan as <code>AWAITING_APPROVAL</code>. Operators can submit and inspect plans. Approvers and administrators can authorize order placement. That role distinction appears in the console, but it is also enforced by the API.</p>
+<p>The C# ordering service independently checks the approver's JWT. The Python agent forwards the authorized token rather than using an unrestricted service identity to bypass the gate. Violating lines are excluded from the order request. This provides a second enforcement point at the system that actually creates the order.</p>
+<p>Tenant identity travels with the authenticated user, plan runs, and audit records. Reads are tenant-scoped, with a separate cross-tenant administrator role. When PostgreSQL is configured, plans and append-only audit records survive process restarts. The offline development path has an in-memory fallback.</p>
+<h2>Evaluate the workflow, then monitor its cost</h2>
+<p>The repository's <a href="https://github.com/EthanJGithub/Sentinel/blob/main/eval/harness.py">evaluation harness</a> runs 12 golden scenarios. It measures planted-violation recall, citation accuracy, grounding, false violations, plan completeness, and feasible-budget adherence. An infeasible budget is a deliberate test case, not a result to hide.</p>
+<p>The <a href="https://github.com/EthanJGithub/Sentinel/blob/main/eval/reports/latest.md">checked-in July 1, 2026 report</a> passes those gates, including all planted violations caught and zero false violations on clean scenarios. These are results on a small, defined offline suite. They do not establish accuracy across every facility, product, or regulatory interpretation. The report's zero model spend and millisecond timings describe that offline evaluation path, not hosted LLM performance.</p>
+<p>Runtime monitoring records node latency, model usage, token cost, and tool success. The system includes Prometheus metrics, readiness checks, structured logs, optional Langfuse export, and a per-request cost ceiling. Those details make it possible to investigate a slow or expensive request at the stage that caused it.</p>
+<h2>Model routing is a capability boundary</h2>
+<p>The provider layer separates structured planning, compliance reasoning, and grounding checks. Configured model providers can handle those capabilities, with fallback paths for unavailable services. The implementation deliberately retains deterministic planning when a free-model route cannot reliably preserve category coverage.</p>
+<p>The hosted prototype currently supports a heuristic backend path, and the console has an explicitly labeled sample fallback when the backend is unavailable. The interface keeps those states visible. That distinction makes the prototype useful for exploring the workflow without confusing a recorded plan with a new live model response.</p>
+<h2>The console follows the reviewer</h2>
+<p>The React console brings the request, live agent trace, compliance findings, cart, and approval queue into one workspace. A slate-blue palette separates it from my other projects. On wide screens, navigation and monitoring flank the plan; tablets move monitoring below the main workflow; phones use collapsible facility details and horizontally scrollable tables.</p>
+<p>I tested the populated layout across widths from 320 to 2560 pixels. The point was to keep the actual review tasks usable: reading a finding, checking a quantity, and locating the approval boundary, rather than merely making the login page fit.</p>
+<h2>What the project demonstrates</h2>
+<p>Sentinel brings agents into an existing operational architecture through explicit contracts. The graph coordinates; tools validate; the catalog owns ordering; evidence constrains claims; a person authorizes the final action. That separation makes the system easier to test, explain, and extend.</p>
+<p>Further work would expand the reviewed corpus and evaluation set, exercise real supplier integrations, and measure hosted-model behavior under realistic workloads. The present build establishes the end-to-end interfaces and the failure paths those integrations need.</p>
+<div class="stack"><span>LangGraph</span><span>FastAPI</span><span>RAG</span><span>MCP</span><span>C# / ASP.NET Core</span><span>React / TypeScript</span><span>PostgreSQL / pgvector</span><span>Docker</span><span>Terraform</span></div>
+<p>Explore the <a href="https://sentinel-console-gamma.vercel.app">live console</a>, the <a href="https://github.com/EthanJGithub/Sentinel/blob/main/ARCHITECTURE-DIAGRAMS.md">architecture diagrams</a>, or the <a href="https://github.com/EthanJGithub/Sentinel">source code</a>.</p></div>
+<div class="more"><span class="kicker">More writing</span><div class="more-grid"><a class="more-card" href="credagent.html"><div class="t">Agentic AI</div><h4>A multi-agent underwriter built to be audited</h4></a><a class="more-card" href="visionlog.html"><div class="t">Computer Vision</div><h4>Real-time detection in the browser</h4></a></div></div>
+</article><footer><span>&copy; 2026 Ethan Jones &middot; Atlanta, GA</span><a href="../index.html">Home</a></footer></body></html>
