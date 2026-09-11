@@ -7,12 +7,18 @@
   navigation.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   const projects = {
-    vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'REAL MODEL OUTPUT / YOLO26N', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
+    vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'RECORDED MODEL OUTPUT / YOLO26M', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
     credit: { category: '02 / AGENTIC AI', heading: 'Decisions with<br>a paper trail.', description: 'Five agents take a loan from ingestion to audit. Policy retrieval, SHAP explanations, and human checkpoints make each decision traceable.', metric: '0.76', label: 'RISK MODEL ROC-AUC', caption: 'INGESTION → RISK → POLICY → DECISION → AUDIT', demo: 'https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/', alt: 'Illustrative five-agent credit underwriting pipeline' },
     sentinel: { category: '04 / SENIOR HEALTHCARE', heading: 'Better sourcing.<br>Accountable decisions.', description: 'A senior-care procurement copilot that sources equipment, checks compliance with citations, reconciles the budget, and routes plans for human approval.', metric: '5 stages', label: 'PROCUREMENT WITH HUMAN APPROVAL', caption: 'PLAN → SOURCE → COMPLIANCE → BUDGET → AUDIT', demo: 'https://sentinel-console-gamma.vercel.app', alt: 'Illustrative senior-care procurement pipeline ending in human approval' },
     fraud: { category: '03 / MACHINE LEARNING', heading: 'Find the signal.<br>Catch the anomaly.', description: 'XGBoost and IsolationForest work together to identify known and novel fraud, with a scoring API, stream simulator, and operations dashboard.', metric: '0.88', label: 'PR-AUC AT 0.17% FRAUD RATE', caption: 'TRANSACTIONS → SCORING → ANOMALY SIGNALS', demo: 'https://fraud-pulse.vercel.app', alt: 'Illustrative transaction stream with highlighted anomaly signals' }
   };
   let selected = 'vision';
+  const video = document.querySelector('#detection-video');
+  video.controls = false;
+  let detectionFrames = [];
+  fetch('assets/visionlog-motion.json').then(r => r.json()).then(data => { detectionFrames = data.frames; updateFrame(video.currentTime); }).catch(() => {});
+  function updateFrame(time) { const record = detectionFrames[Math.min(detectionFrames.length - 1, Math.floor((time + .00001) * 10))]; if (record) document.querySelector('#frame-count').textContent = String(record.detections.length).padStart(2, '0'); }
+  if ('requestVideoFrameCallback' in video) { const onFrame = (_, metadata) => { updateFrame(metadata.mediaTime); video.requestVideoFrameCallback(onFrame); }; video.requestVideoFrameCallback(onFrame); } else video.addEventListener('timeupdate', () => updateFrame(video.currentTime));
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const canvas = document.querySelector('#system-canvas');
   const context = canvas.getContext('2d');
@@ -22,8 +28,8 @@
     const project = projects[selected];
     document.querySelector('#lab-visual').dataset.project = selected;
     document.querySelector('#real-output').hidden = selected !== 'vision';
-    document.querySelector('#motion-toggle').hidden = selected === 'vision';
-    document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'SAMPLE FRAME · ACTUAL MODEL OUTPUT · <a href="https://github.com/EthanJGithub/VisionLog/blob/main/tests/fixtures/bus.jpg" target="_blank" rel="noopener">SOURCE ↗</a>' : 'ILLUSTRATIVE SYSTEM VIEW · SYNTHETIC DATA';
+    document.querySelector('#motion-toggle').hidden = false;
+    document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'FRAME-BY-FRAME INFERENCE &middot; PEDESTRIANS &middot; <a href="https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi" target="_blank" rel="noopener">SOURCE &#8599;</a>' : 'ILLUSTRATIVE SYSTEM VIEW · SYNTHETIC DATA';
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tab.id);
     document.querySelector('#lab-category').textContent = project.category;
@@ -34,7 +40,7 @@
     document.querySelector('#visual-caption').textContent = project.caption;
     document.querySelector('#lab-demo').href = project.demo;
     canvas.setAttribute('aria-label', project.alt);
-    draw();
+    draw(); schedule();
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => select(tab));
@@ -104,9 +110,9 @@
     if(selected==='vision')return; else if(selected==='credit'||selected==='sentinel')credit();else fraud();
   }
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
-  function schedule() { if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
+  function schedule() { if (selected === 'vision' && !paused && visible && !document.hidden) video.play().catch(() => { paused = true; updatePause(); }); else video.pause(); if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
   new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(canvas);
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(document.querySelector('#lab-visual'));
   document.addEventListener('visibilitychange',schedule);
   resize();schedule();
 })();
