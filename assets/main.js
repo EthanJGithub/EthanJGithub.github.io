@@ -9,6 +9,7 @@
   const projects = {
     vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'DETECTION → TRACKING → STRUCTURED DATA', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
     credit: { category: '02 / AGENTIC AI', heading: 'Decisions with<br>a paper trail.', description: 'Five agents take a loan from ingestion to audit. Policy retrieval, SHAP explanations, and human checkpoints make each decision traceable.', metric: '0.76', label: 'RISK MODEL ROC-AUC', caption: 'INGESTION → RISK → POLICY → DECISION → AUDIT', demo: 'https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/', alt: 'Illustrative five-agent credit underwriting pipeline' },
+    sentinel: { category: '04 / SENIOR HEALTHCARE', heading: 'Better sourcing.<br>Accountable decisions.', description: 'A senior-care procurement copilot that sources equipment, checks compliance with citations, reconciles the budget, and routes plans for human approval.', metric: '5 stages', label: 'PROCUREMENT WITH HUMAN APPROVAL', caption: 'PLAN → SOURCE → COMPLIANCE → BUDGET → AUDIT', demo: 'https://sentinel-console-gamma.vercel.app', alt: 'Illustrative senior-care procurement pipeline ending in human approval' },
     fraud: { category: '03 / MACHINE LEARNING', heading: 'Find the signal.<br>Catch the anomaly.', description: 'XGBoost and IsolationForest work together to identify known and novel fraud, with a scoring API, stream simulator, and operations dashboard.', metric: '0.88', label: 'PR-AUC AT 0.17% FRAUD RATE', caption: 'TRANSACTIONS → SCORING → ANOMALY SIGNALS', demo: 'https://fraud-pulse.vercel.app', alt: 'Illustrative transaction stream with highlighted anomaly signals' }
   };
   let selected = 'vision';
@@ -82,7 +83,7 @@
     const scan = 60 + ((tick*30) % (height-100)); line(20,scan,width-20,scan,'#c1edab18');
   }
   function credit() {
-    const labels=['INGEST','RISK','POLICY','DECIDE','AUDIT'];
+    const labels=selected==='sentinel'?['PLAN','SOURCE','VERIFY','BUDGET','AUDIT']:['INGEST','RISK','POLICY','DECIDE','AUDIT'];
     const node = Math.min(72,width*.135), gap=(width-48-node*5)/4, y=height*.45;
     labels.forEach((label,i) => {
       const x=24+i*(node+gap), active = Math.floor(tick*.9)%5===i;
@@ -91,9 +92,9 @@
       context.strokeStyle=active?'#c1edab':'#38503c'; context.strokeRect(x,y,node,node);
       text(`0${i+1}`,x+node*.35,y+node*.5,16,active?'#c1edab':'#849d85');
       text(label,x+2,y+node+20,width<450?8:10);
-      if(i===2){line(x+node/2,y,x+node/2,y-32);text('HUMAN REVIEW',Math.max(25,x-15),y-43,9,'#c1edab');}
+      if(i===(selected==='sentinel'?4:2)){line(x+node/2,y,x+node/2,y-32);text('HUMAN REVIEW',Math.max(25,x-15),y-43,9,'#c1edab');}
     });
-    line(24,height*.83,width-24,height*.83);text('POLICY RETRIEVAL',24,height*.9,9);text('IMMUTABLE AUDIT TRAIL',width*.52,height*.9,width<450?8:9,'#c1edab');
+    line(24,height*.83,width-24,height*.83);text(selected==='sentinel'?'CITATION OR ABSTAIN':'POLICY RETRIEVAL',24,height*.9,9);text('IMMUTABLE AUDIT TRAIL',width*.52,height*.9,width<450?8:9,'#c1edab');
   }
   function fraud() {
     const left=28, right=width-28, top=height*.27, bottom=height*.77;
@@ -112,7 +113,7 @@
     if(!context || !width) return;
     context.clearRect(0,0,width,height);
     for(let x=20;x<width;x+=26) for(let y=20;y<height;y+=26) {context.fillStyle='#2b3e3065';context.fillRect(x,y,1,1);}
-    if(selected==='vision')vision(); else if(selected==='credit')credit();else fraud();
+    if(selected==='vision')vision(); else if(selected==='credit'||selected==='sentinel')credit();else fraud();
   }
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
   function schedule() { if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }

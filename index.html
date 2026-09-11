@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ethan Jones — AI / ML &amp; Software Engineer</title>
-<meta name="description" content="Ethan Jones — AI/ML and software engineer building agentic AI, computer vision, and production machine learning. Three live, deployed projects on real data." />
+<meta name="description" content="Ethan Jones — AI/ML and software engineer building agentic AI, computer vision, and production machine learning. Four deployed projects across computer vision, finance, and senior-care procurement." />
 <meta property="og:title" content="Ethan Jones — AI / ML & Software Engineer" />
-<meta property="og:description" content="Building agentic AI, computer vision, and production ML — with three live, deployed projects." />
+<meta property="og:description" content="Building agentic AI, computer vision, and production ML — with four deployed projects." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,15 +43,16 @@
     <button id="tab-vision" role="tab" aria-selected="true" aria-controls="lab-panel" data-project="vision" tabindex="0"><span>01</span> VisionLog <small>COMPUTER VISION</small></button>
     <button id="tab-credit" role="tab" aria-selected="false" aria-controls="lab-panel" data-project="credit" tabindex="-1"><span>02</span> CredAgent <small>AGENTIC AI</small></button>
     <button id="tab-fraud" role="tab" aria-selected="false" aria-controls="lab-panel" data-project="fraud" tabindex="-1"><span>03</span> FraudPulse <small>MACHINE LEARNING</small></button>
+    <button id="tab-sentinel" role="tab" aria-selected="false" aria-controls="lab-panel" data-project="sentinel" tabindex="-1"><span>04</span> Sentinel <small>SENIOR CARE</small></button>
   </div>
   <div class="lab-body" id="lab-panel" role="tabpanel" aria-labelledby="tab-vision" tabindex="0">
     <div class="lab-visual"><canvas id="system-canvas" aria-label="Illustrative computer vision pipeline with tracked objects" role="img"></canvas><div class="visual-label"><span id="visual-caption">DETECTION → TRACKING → STRUCTURED DATA</span><button id="motion-toggle" aria-pressed="false">Pause animation <span aria-hidden="true">Ⅱ</span></button></div><span class="visual-note">ILLUSTRATIVE SYSTEM VIEW · SYNTHETIC DATA</span></div>
     <div class="lab-copy"><span class="eyebrow" id="lab-category">01 / COMPUTER VISION</span><h2 id="lab-heading">Pixels to<br>understanding.</h2><p id="lab-description">Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.</p><div class="lab-metric"><strong id="lab-metric">YOLO26</strong><span id="lab-metric-label">INFERENCE IN YOUR BROWSER</span></div><a id="lab-demo" class="text-link" href="https://vision-log-lilac.vercel.app" target="_blank" rel="noopener">Open live project <span aria-hidden="true">↗</span></a></div>
   </div>
-  <div class="lab-footer"><span>THREE DEPLOYED APPS. REAL DATA. OPEN SOURCE.</span><a href="#writing">Behind the builds ↗</a></div>
+  <div class="lab-footer"><span>FOUR DEPLOYED APPS. EXPLORE THE SYSTEMS.</span><a href="#writing">Behind the builds ↗</a></div>
 </section>
 <div class="wrap stats">
- <div class="stat"><div class="n">03<span> /</span></div><div class="l">Live, deployed apps</div></div>
+ <div class="stat"><div class="n">04<span> /</span></div><div class="l">Live, deployed apps</div></div>
  <div class="stat"><div class="n">WebGPU</div><div class="l">Real-time CV in-browser</div></div>
  <div class="stat"><div class="n">LangGraph</div><div class="l">Multi-agent pipelines</div></div>
  <div class="stat"><div class="n">B.S. CS</div><div class="l">ABET-accredited · GPA 3.44</div></div>
@@ -62,7 +63,7 @@
   <div class="wrap">
     <span class="kicker">Portfolio</span>
     <h2 class="h2">Built to be used.</h2>
-    <p class="lead">Three deployed systems. Explore the architecture, try the demos, or go straight to the code.</p>
+    <p class="lead">Four deployed systems. Explore the architecture, try the demos, or go straight to the code.</p>
     <div class="proj-grid">
 
       <details class="project-row" open><summary><span class="project-number">01</span><div class="project-title"><span class="ptag">Computer Vision · Agentic</span><h3>VisionLog</h3><span class="project-subtitle">Browser-native CV</span></div><div class="project-metric"><strong>YOLO26</strong><span>ONNX / WebGPU</span></div><span class="expand-icon" aria-hidden="true">+</span></summary><div class="project-body"><p>Browser-native real-time object detection — YOLO26 on WebGPU (real-time capable) — with open-vocabulary detection, a domain fine-tune (Construction-PPE, mAP@50 0.46), a full evaluation suite, and detections logged to PostgreSQL. Includes a LangGraph text-to-SQL agent over the detections database.</p><div><div class="tech"><span>YOLO26</span><span>ONNX / WebGPU</span><span>PyTorch</span><span>LangGraph</span><span>FastAPI</span><span>PostgreSQL</span><span>React/Vite</span></div><div class="card-links">
@@ -79,6 +80,8 @@
           <a class="demo" href="https://fraud-pulse.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
           <a href="https://github.com/EthanJGithub/FraudPulse" target="_blank" rel="noopener">Code ↗</a>
         </div><a class="project-article" href="articles/fraudpulse.html">Read the build log ↗</a></div></div></details>
+
+      <details class="project-row"><summary><span class="project-number">04</span><div class="project-title"><span class="ptag">Agentic AI · Senior Healthcare</span><h3>Sentinel</h3><span class="project-subtitle">Procurement &amp; compliance copilot</span></div><div class="project-metric"><strong>5 stages</strong><span>Plan → source → verify → audit</span></div><span class="expand-icon" aria-hidden="true">+</span></summary><div class="project-body"><p>A senior-care procurement prototype that turns a facility request into an equipment plan. LangGraph coordinates sourcing, citation-grounded compliance checks, budget reconciliation, and an audit trail before human approval. Built with a Python agent, C# catalog service, TypeScript MCP tools, and a React console. Uses public regulation references and a representative catalog with synthetic pricing.</p><div><div class="tech"><span>LangGraph</span><span>RAG</span><span>MCP</span><span>FastAPI</span><span>C# / ASP.NET Core</span><span>TypeScript / React</span><span>PostgreSQL</span><span>Docker</span><span>Terraform</span></div><div class="card-links"><a class="demo" href="https://sentinel-console-gamma.vercel.app" target="_blank" rel="noopener">Live console ↗</a><a href="https://github.com/EthanJGithub/Sentinel" target="_blank" rel="noopener">Code ↗</a></div><a class="project-article" href="https://github.com/EthanJGithub/Sentinel#the-architecture" target="_blank" rel="noopener">Explore the architecture ↗</a></div></div></details>
 
     </div>
   </div>
