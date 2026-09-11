@@ -1,0 +1,59 @@
+{
+  "model": "yolo26n",
+  "backend": "wasm",
+  "confidence_threshold": 0.4,
+  "input_size": 640,
+  "image_width": 810,
+  "image_height": 1080,
+  "inference_ms": 251,
+  "detections": [
+    {
+      "class_id": 5,
+      "class_label": "bus",
+      "confidence": 0.925,
+      "bbox_x": 5.74,
+      "bbox_y": 228.89,
+      "bbox_w": 801.44,
+      "bbox_h": 520.65
+    },
+    {
+      "class_id": 0,
+      "class_label": "person",
+      "confidence": 0.9154,
+      "bbox_x": 46.61,
+      "bbox_y": 398.87,
+      "bbox_w": 190.9,
+      "bbox_h": 502.88
+    },
+    {
+      "class_id": 0,
+      "class_label": "person",
+      "confidence": 0.8994,
+      "bbox_x": 223.02,
+      "bbox_y": 405.37,
+      "bbox_w": 122.2,
+      "bbox_h": 457.7
+    },
+    {
+      "class_id": 0,
+      "class_label": "person",
+      "confidence": 0.8591,
+      "bbox_x": 668.79,
+      "bbox_y": 391.14,
+      "bbox_w": 141.21,
+      "bbox_h": 488.68
+    },
+    {
+      "class_id": 0,
+      "class_label": "person",
+      "confidence": 0.5244,
+      "bbox_x": 0,
+      "bbox_y": 553.75,
+      "bbox_w": 64.99,
+      "bbox_h": 320.49
+    }
+  ],
+  "captured_at": "2026-09-11T13:15:02.418Z",
+  "source": "https://github.com/EthanJGithub/VisionLog/blob/main/tests/fixtures/bus.jpg",
+  "method": "Actual VisionLog browser detector, rendered using the same overlay module as the app. One still frame; no claim of live inference or benchmark speed."
+}

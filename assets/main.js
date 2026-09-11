@@ -7,7 +7,7 @@
   navigation.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   const projects = {
-    vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'DETECTION → TRACKING → STRUCTURED DATA', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
+    vision: { category: '01 / COMPUTER VISION', heading: 'Pixels to<br>understanding.', description: 'Browser-native object detection with YOLO26 and WebGPU. Track objects, log detections, and ask your data questions in plain English.', metric: 'YOLO26', label: 'INFERENCE IN YOUR BROWSER', caption: 'REAL MODEL OUTPUT / YOLO26N', demo: 'https://vision-log-lilac.vercel.app', alt: 'Illustrative computer vision pipeline with tracked objects' },
     credit: { category: '02 / AGENTIC AI', heading: 'Decisions with<br>a paper trail.', description: 'Five agents take a loan from ingestion to audit. Policy retrieval, SHAP explanations, and human checkpoints make each decision traceable.', metric: '0.76', label: 'RISK MODEL ROC-AUC', caption: 'INGESTION → RISK → POLICY → DECISION → AUDIT', demo: 'https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/', alt: 'Illustrative five-agent credit underwriting pipeline' },
     sentinel: { category: '04 / SENIOR HEALTHCARE', heading: 'Better sourcing.<br>Accountable decisions.', description: 'A senior-care procurement copilot that sources equipment, checks compliance with citations, reconciles the budget, and routes plans for human approval.', metric: '5 stages', label: 'PROCUREMENT WITH HUMAN APPROVAL', caption: 'PLAN → SOURCE → COMPLIANCE → BUDGET → AUDIT', demo: 'https://sentinel-console-gamma.vercel.app', alt: 'Illustrative senior-care procurement pipeline ending in human approval' },
     fraud: { category: '03 / MACHINE LEARNING', heading: 'Find the signal.<br>Catch the anomaly.', description: 'XGBoost and IsolationForest work together to identify known and novel fraud, with a scoring API, stream simulator, and operations dashboard.', metric: '0.88', label: 'PR-AUC AT 0.17% FRAUD RATE', caption: 'TRANSACTIONS → SCORING → ANOMALY SIGNALS', demo: 'https://fraud-pulse.vercel.app', alt: 'Illustrative transaction stream with highlighted anomaly signals' }
@@ -20,6 +20,10 @@
   function select(tab) {
     selected = tab.dataset.project;
     const project = projects[selected];
+    document.querySelector('#lab-visual').dataset.project = selected;
+    document.querySelector('#real-output').hidden = selected !== 'vision';
+    document.querySelector('#motion-toggle').hidden = selected === 'vision';
+    document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'SAMPLE FRAME · ACTUAL MODEL OUTPUT · <a href="https://github.com/EthanJGithub/VisionLog/blob/main/tests/fixtures/bus.jpg" target="_blank" rel="noopener">SOURCE ↗</a>' : 'ILLUSTRATIVE SYSTEM VIEW · SYNTHETIC DATA';
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tab.id);
     document.querySelector('#lab-category').textContent = project.category;
@@ -66,22 +70,6 @@
     context.fillStyle = color; context.fillRect(x,y-18,Math.min(w, label.length*5.5+12),18);
     text(label,x+6,y-6,9,'#0c1811');
   }
-  function vision() {
-    const baseline = height * .79;
-    // A schematic scene, intentionally distinct from model inference or footage.
-    for (let i = 0; i < 9; i++) { const x = width*.07+i*width*.1; const h = 25+(Math.sin(i*8)+1)*36; context.fillStyle='#16241d'; context.fillRect(x,baseline-h,width*.07,h); }
-    line(25,baseline,width-25,baseline,'#35513f');
-    const objects = [{x:.16,y:.33,w:.15,h:.4,c:'#c1edab',label:'PERSON · 01'},{x:.49,y:.47,w:.28,h:.24,c:'#75beb0',label:'VEHICLE · 02'},{x:.78,y:.29,w:.10,h:.45,c:'#c1edab',label:'PERSON · 03'}];
-    objects.forEach((o,i) => {
-      const x = width*(o.x+Math.sin(tick*.45+i*2)*.022), y=height*o.y, w=width*o.w, h=height*o.h;
-      if (i !== 1) { context.fillStyle='#47644e60'; context.beginPath(); context.arc(x+w/2,y+h*.21,w*.14,0,Math.PI*2); context.fill(); context.fillRect(x+w*.31,y+h*.36,w*.38,h*.35); line(x+w*.4,y+h*.65,x+w*.29,y+h*.92,'#47644e'); line(x+w*.6,y+h*.65,x+w*.71,y+h*.92,'#47644e'); }
-      else { context.fillStyle='#33554b70'; context.fillRect(x+w*.1,y+h*.4,w*.8,h*.35); context.fillRect(x+w*.3,y+h*.2,w*.4,h*.25); }
-      box(x,y,w,h,o.label,o.c);
-      context.setLineDash([2,5]); line(x+w/2,y+h,width*.46,height*.91,'#47644e'); context.setLineDash([]);
-    });
-    text('YOLO26 / ONNX',25,height-43,9,'#c1edab'); text('OBJECTS → POSTGRESQL → LANGGRAPH',width*.48,height-43,width<450?7:9);
-    const scan = 60 + ((tick*30) % (height-100)); line(20,scan,width-20,scan,'#c1edab18');
-  }
   function credit() {
     const labels=selected==='sentinel'?['PLAN','SOURCE','VERIFY','BUDGET','AUDIT']:['INGEST','RISK','POLICY','DECIDE','AUDIT'];
     const node = Math.min(72,width*.135), gap=(width-48-node*5)/4, y=height*.45;
@@ -113,7 +101,7 @@
     if(!context || !width) return;
     context.clearRect(0,0,width,height);
     for(let x=20;x<width;x+=26) for(let y=20;y<height;y+=26) {context.fillStyle='#2b3e3065';context.fillRect(x,y,1,1);}
-    if(selected==='vision')vision(); else if(selected==='credit'||selected==='sentinel')credit();else fraud();
+    if(selected==='vision')return; else if(selected==='credit'||selected==='sentinel')credit();else fraud();
   }
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
   function schedule() { if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
