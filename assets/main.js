@@ -16,7 +16,7 @@
   const video = document.querySelector('#detection-video');
   video.controls = false;
   let detectionFrames = [];
-  fetch('assets/visionlog-motion.json').then(r => r.json()).then(data => { detectionFrames = data.frames; updateFrame(video.currentTime); }).catch(() => {});
+  fetch('assets/visionlog-tracking-v2.json').then(r => r.json()).then(data => { detectionFrames = data.frames; updateFrame(video.currentTime); }).catch(() => {});
   function updateFrame(time) { const record = detectionFrames[Math.min(detectionFrames.length - 1, Math.floor((time + .00001) * 10))]; if (record) document.querySelector('#frame-count').textContent = String(record.detections.length).padStart(2, '0'); }
   if ('requestVideoFrameCallback' in video) { const onFrame = (_, metadata) => { updateFrame(video.paused ? video.currentTime : metadata.mediaTime); video.requestVideoFrameCallback(onFrame); }; video.requestVideoFrameCallback(onFrame); } else video.addEventListener('timeupdate', () => updateFrame(video.currentTime));
   video.addEventListener('seeked', () => updateFrame(video.currentTime));
@@ -56,10 +56,11 @@
     });
   });
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = reducedMotion.matches, visible = true, tick = 0, last = 0, frame = null;
+  let paused = reducedMotion.matches, visible = false, tick = 0, last = 0, frame = null;
   const pause = document.querySelector('#motion-toggle');
   function updatePause() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused); pause.setAttribute('aria-pressed', String(paused)); pause.innerHTML = paused ? 'Play animation <span aria-hidden="true">▷</span>' : 'Pause animation <span aria-hidden="true">Ⅱ</span>'; }
-  pause.addEventListener('click', () => { paused = !paused; updatePause(); schedule(); });
+  video.addEventListener('ended', () => { paused = true; updatePause(); pause.textContent = 'Replay clip'; });
+  pause.addEventListener('click', () => { if (selected === 'vision' && video.ended) video.currentTime = 0; paused = !paused; updatePause(); schedule(); });
   reducedMotion.addEventListener('change', event => { paused = event.matches; updatePause(); schedule(); });
   updatePause();
   let width = 0, height = 0;
@@ -114,7 +115,7 @@
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
   function schedule() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused || !visible || document.hidden || selected !== 'sentinel'); if (selected === 'vision' && !paused && visible && !document.hidden) video.play().catch(() => { paused = true; updatePause(); }); else video.pause(); if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
   new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(document.querySelector('#lab-visual'));
+  new IntersectionObserver(entries=>{visible=entries[0].intersectionRatio >= .5;schedule();},{threshold:[0,.5]}).observe(document.querySelector('#lab-visual'));
   document.addEventListener('visibilitychange',schedule);
   resize();schedule();
 })();

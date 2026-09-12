@@ -1,0 +1,2738 @@
+{
+  "model": "yolo26m",
+  "backend": "wasm",
+  "confidence_threshold": 0.45,
+  "class_filter": [
+    "person"
+  ],
+  "input_size": 640,
+  "width": 768,
+  "height": 576,
+  "fps": 10,
+  "duration_seconds": 7,
+  "source": "https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi",
+  "source_start_seconds": 40.4,
+  "method": "Continuous original-speed footage: OpenCV vtest source frames 404-473, 10 fps. Actual YOLO26m browser observations reprocessed with a fresh app tracker. Shared app overlay; no manually reassigned IDs, invented detections, interpolation or scene cuts. All 70 frames visually reviewed. Four identities, sequentially assigned 1-4, with no ID swaps or gaps after first detection in this selected segment.",
+  "video_sha256": "872d719fd7e3b7d2ffd75992d576b83e404c33416b46dc0db7fbedf3034937c7",
+  "frames": [
+    {
+      "frame": 0,
+      "timestamp": 0,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8908,
+          "bbox_x": 295.73,
+          "bbox_y": 207.01,
+          "bbox_w": 25.45,
+          "bbox_h": 84.82,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8699,
+          "bbox_x": 567.32,
+          "bbox_y": 136.74,
+          "bbox_w": 35.14,
+          "bbox_h": 64.33,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "timestamp": 0.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8856,
+          "bbox_x": 569.99,
+          "bbox_y": 137.41,
+          "bbox_w": 32.24,
+          "bbox_h": 63.62,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8826,
+          "bbox_x": 296.67,
+          "bbox_y": 206.81,
+          "bbox_w": 23.66,
+          "bbox_h": 84.84,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "timestamp": 0.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8806,
+          "bbox_x": 297.84,
+          "bbox_y": 206.32,
+          "bbox_w": 23.14,
+          "bbox_h": 85.46,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.876,
+          "bbox_x": 570.15,
+          "bbox_y": 137.47,
+          "bbox_w": 32.12,
+          "bbox_h": 63.54,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "timestamp": 0.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8775,
+          "bbox_x": 298.12,
+          "bbox_y": 205.91,
+          "bbox_w": 22.71,
+          "bbox_h": 86.03,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8611,
+          "bbox_x": 569.67,
+          "bbox_y": 137.36,
+          "bbox_w": 32.81,
+          "bbox_h": 63.65,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "timestamp": 0.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8966,
+          "bbox_x": 572.06,
+          "bbox_y": 137.89,
+          "bbox_w": 30.71,
+          "bbox_h": 63.1,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8721,
+          "bbox_x": 298.44,
+          "bbox_y": 205.43,
+          "bbox_w": 21.65,
+          "bbox_h": 86.44,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "timestamp": 0.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9073,
+          "bbox_x": 574.22,
+          "bbox_y": 138.26,
+          "bbox_w": 27.45,
+          "bbox_h": 62.73,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8629,
+          "bbox_x": 298.21,
+          "bbox_y": 205,
+          "bbox_w": 21.77,
+          "bbox_h": 87.06,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "timestamp": 0.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9162,
+          "bbox_x": 573.32,
+          "bbox_y": 138.9,
+          "bbox_w": 26.32,
+          "bbox_h": 62.07,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.873,
+          "bbox_x": 298.23,
+          "bbox_y": 205.2,
+          "bbox_w": 21.76,
+          "bbox_h": 86.73,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "timestamp": 0.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8941,
+          "bbox_x": 573.44,
+          "bbox_y": 139.3,
+          "bbox_w": 25.18,
+          "bbox_h": 62.22,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8778,
+          "bbox_x": 298.5,
+          "bbox_y": 205.48,
+          "bbox_w": 21.68,
+          "bbox_h": 86.62,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "timestamp": 0.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9071,
+          "bbox_x": 571.18,
+          "bbox_y": 140.51,
+          "bbox_w": 27.65,
+          "bbox_h": 61.57,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8772,
+          "bbox_x": 297.99,
+          "bbox_y": 205.51,
+          "bbox_w": 22.53,
+          "bbox_h": 86.5,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "timestamp": 0.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9073,
+          "bbox_x": 570.91,
+          "bbox_y": 141.01,
+          "bbox_w": 27.31,
+          "bbox_h": 62.23,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8818,
+          "bbox_x": 297.57,
+          "bbox_y": 205.93,
+          "bbox_w": 24.25,
+          "bbox_h": 86.18,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "timestamp": 1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8902,
+          "bbox_x": 567.12,
+          "bbox_y": 140.68,
+          "bbox_w": 24.59,
+          "bbox_h": 63.78,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.88,
+          "bbox_x": 296.81,
+          "bbox_y": 205.85,
+          "bbox_w": 24.96,
+          "bbox_h": 86.23,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "timestamp": 1.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9011,
+          "bbox_x": 563.6,
+          "bbox_y": 140.8,
+          "bbox_w": 25.41,
+          "bbox_h": 63.58,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.898,
+          "bbox_x": 294.76,
+          "bbox_y": 206.22,
+          "bbox_w": 27.9,
+          "bbox_h": 85.92,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "timestamp": 1.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9073,
+          "bbox_x": 292.7,
+          "bbox_y": 206.26,
+          "bbox_w": 30.43,
+          "bbox_h": 85.89,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8805,
+          "bbox_x": 561.53,
+          "bbox_y": 141.38,
+          "bbox_w": 25.24,
+          "bbox_h": 64.37,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "timestamp": 1.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9096,
+          "bbox_x": 291.71,
+          "bbox_y": 206.49,
+          "bbox_w": 31.36,
+          "bbox_h": 85.78,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.7759,
+          "bbox_x": 560.17,
+          "bbox_y": 141.96,
+          "bbox_w": 24.42,
+          "bbox_h": 65.71,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "timestamp": 1.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9156,
+          "bbox_x": 289.58,
+          "bbox_y": 206.05,
+          "bbox_w": 33.84,
+          "bbox_h": 86.06,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.868,
+          "bbox_x": 557.83,
+          "bbox_y": 142.64,
+          "bbox_w": 24.2,
+          "bbox_h": 65.85,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "timestamp": 1.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9151,
+          "bbox_x": 289.03,
+          "bbox_y": 205.1,
+          "bbox_w": 34.18,
+          "bbox_h": 86.86,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.5187,
+          "bbox_x": 554.59,
+          "bbox_y": 144.15,
+          "bbox_w": 22.88,
+          "bbox_h": 65.05,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "timestamp": 1.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9063,
+          "bbox_x": 293.65,
+          "bbox_y": 205.31,
+          "bbox_w": 31.04,
+          "bbox_h": 86.94,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.6698,
+          "bbox_x": 552.13,
+          "bbox_y": 144.53,
+          "bbox_w": 23.06,
+          "bbox_h": 64.86,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8418,
+          "bbox_x": 751.51,
+          "bbox_y": 286.17,
+          "bbox_w": 16.19,
+          "bbox_h": 99.06,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 17,
+      "timestamp": 1.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9041,
+          "bbox_x": 295.72,
+          "bbox_y": 205.22,
+          "bbox_w": 28.67,
+          "bbox_h": 86.94,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8995,
+          "bbox_x": 547.61,
+          "bbox_y": 145.53,
+          "bbox_w": 25.43,
+          "bbox_h": 64.88,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.7389,
+          "bbox_x": 744.57,
+          "bbox_y": 296.84,
+          "bbox_w": 23.13,
+          "bbox_h": 93.33,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 18,
+      "timestamp": 1.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9033,
+          "bbox_x": 542.68,
+          "bbox_y": 146.7,
+          "bbox_w": 27.6,
+          "bbox_h": 65.59,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8905,
+          "bbox_x": 296.4,
+          "bbox_y": 205.22,
+          "bbox_w": 25.78,
+          "bbox_h": 86.85,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8708,
+          "bbox_x": 741.35,
+          "bbox_y": 283.53,
+          "bbox_w": 26.35,
+          "bbox_h": 106.29,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 19,
+      "timestamp": 1.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9028,
+          "bbox_x": 540.45,
+          "bbox_y": 147.76,
+          "bbox_w": 24.93,
+          "bbox_h": 65.97,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8807,
+          "bbox_x": 297.52,
+          "bbox_y": 205.16,
+          "bbox_w": 24,
+          "bbox_h": 86.99,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8736,
+          "bbox_x": 728.53,
+          "bbox_y": 278.51,
+          "bbox_w": 36.7,
+          "bbox_h": 103.5,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 20,
+      "timestamp": 2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9159,
+          "bbox_x": 717.19,
+          "bbox_y": 277.83,
+          "bbox_w": 42.22,
+          "bbox_h": 103.87,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9104,
+          "bbox_x": 535.43,
+          "bbox_y": 148.13,
+          "bbox_w": 27.33,
+          "bbox_h": 65.75,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8798,
+          "bbox_x": 298.65,
+          "bbox_y": 205.01,
+          "bbox_w": 22.76,
+          "bbox_h": 86.98,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 21,
+      "timestamp": 2.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.92,
+          "bbox_x": 708.57,
+          "bbox_y": 278.03,
+          "bbox_w": 48.6,
+          "bbox_h": 102.75,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9126,
+          "bbox_x": 531.52,
+          "bbox_y": 149.05,
+          "bbox_w": 29.56,
+          "bbox_h": 67.37,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8808,
+          "bbox_x": 298.55,
+          "bbox_y": 204.93,
+          "bbox_w": 21.98,
+          "bbox_h": 87.17,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 22,
+      "timestamp": 2.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9157,
+          "bbox_x": 529.29,
+          "bbox_y": 150.61,
+          "bbox_w": 29.96,
+          "bbox_h": 67.28,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9081,
+          "bbox_x": 707.27,
+          "bbox_y": 277.06,
+          "bbox_w": 47.24,
+          "bbox_h": 102.08,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8541,
+          "bbox_x": 298.59,
+          "bbox_y": 204.78,
+          "bbox_w": 21.46,
+          "bbox_h": 87.24,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 23,
+      "timestamp": 2.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9079,
+          "bbox_x": 707.47,
+          "bbox_y": 275.77,
+          "bbox_w": 39.07,
+          "bbox_h": 100.84,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8994,
+          "bbox_x": 528.77,
+          "bbox_y": 152.07,
+          "bbox_w": 28.93,
+          "bbox_h": 66.42,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8603,
+          "bbox_x": 298.76,
+          "bbox_y": 204.9,
+          "bbox_w": 21.31,
+          "bbox_h": 87.16,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 24,
+      "timestamp": 2.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9122,
+          "bbox_x": 528.37,
+          "bbox_y": 152.9,
+          "bbox_w": 27.86,
+          "bbox_h": 67.36,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9034,
+          "bbox_x": 703.64,
+          "bbox_y": 273.69,
+          "bbox_w": 31.3,
+          "bbox_h": 102.16,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8852,
+          "bbox_x": 298.78,
+          "bbox_y": 206.55,
+          "bbox_w": 21.99,
+          "bbox_h": 85.57,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 25,
+      "timestamp": 2.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9165,
+          "bbox_x": 525.1,
+          "bbox_y": 154.21,
+          "bbox_w": 28.06,
+          "bbox_h": 66.78,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.907,
+          "bbox_x": 688.05,
+          "bbox_y": 272.81,
+          "bbox_w": 36.48,
+          "bbox_h": 103.08,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8868,
+          "bbox_x": 295.64,
+          "bbox_y": 207.94,
+          "bbox_w": 27.72,
+          "bbox_h": 83.98,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 26,
+      "timestamp": 2.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9104,
+          "bbox_x": 684.41,
+          "bbox_y": 271.97,
+          "bbox_w": 37.9,
+          "bbox_h": 102.62,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9096,
+          "bbox_x": 522.08,
+          "bbox_y": 155.93,
+          "bbox_w": 29.45,
+          "bbox_h": 67.74,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8954,
+          "bbox_x": 295.66,
+          "bbox_y": 207.46,
+          "bbox_w": 25.83,
+          "bbox_h": 84.32,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 27,
+      "timestamp": 2.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9169,
+          "bbox_x": 521.34,
+          "bbox_y": 157.52,
+          "bbox_w": 27.84,
+          "bbox_h": 67.98,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.907,
+          "bbox_x": 684.51,
+          "bbox_y": 270.13,
+          "bbox_w": 32.19,
+          "bbox_h": 102.93,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.893,
+          "bbox_x": 295.88,
+          "bbox_y": 207.17,
+          "bbox_w": 24.8,
+          "bbox_h": 84.66,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 28,
+      "timestamp": 2.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9123,
+          "bbox_x": 515.84,
+          "bbox_y": 157.85,
+          "bbox_w": 26.79,
+          "bbox_h": 69.49,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9095,
+          "bbox_x": 671.81,
+          "bbox_y": 266.64,
+          "bbox_w": 31.85,
+          "bbox_h": 100.87,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8927,
+          "bbox_x": 295.78,
+          "bbox_y": 206.35,
+          "bbox_w": 24.36,
+          "bbox_h": 85.3,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 29,
+      "timestamp": 2.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9275,
+          "bbox_x": 654.49,
+          "bbox_y": 266.54,
+          "bbox_w": 43.68,
+          "bbox_h": 100.76,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9232,
+          "bbox_x": 514.1,
+          "bbox_y": 158.89,
+          "bbox_w": 26.86,
+          "bbox_h": 69.64,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8907,
+          "bbox_x": 296.17,
+          "bbox_y": 205.8,
+          "bbox_w": 24.33,
+          "bbox_h": 85.96,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 30,
+      "timestamp": 3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9269,
+          "bbox_x": 650.71,
+          "bbox_y": 266.54,
+          "bbox_w": 46.87,
+          "bbox_h": 99,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9211,
+          "bbox_x": 512.73,
+          "bbox_y": 160.6,
+          "bbox_w": 26.24,
+          "bbox_h": 69.89,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8892,
+          "bbox_x": 297.07,
+          "bbox_y": 205.1,
+          "bbox_w": 23.9,
+          "bbox_h": 86.96,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 31,
+      "timestamp": 3.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9225,
+          "bbox_x": 650.83,
+          "bbox_y": 264.89,
+          "bbox_w": 42.31,
+          "bbox_h": 98.78,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9098,
+          "bbox_x": 511.45,
+          "bbox_y": 162.5,
+          "bbox_w": 25.94,
+          "bbox_h": 69.71,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8889,
+          "bbox_x": 298.2,
+          "bbox_y": 204.55,
+          "bbox_w": 22.97,
+          "bbox_h": 87.55,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 32,
+      "timestamp": 3.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9159,
+          "bbox_x": 645.41,
+          "bbox_y": 261.74,
+          "bbox_w": 29.33,
+          "bbox_h": 99.96,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9009,
+          "bbox_x": 507.82,
+          "bbox_y": 163.19,
+          "bbox_w": 25.93,
+          "bbox_h": 70.38,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8797,
+          "bbox_x": 299.61,
+          "bbox_y": 203.12,
+          "bbox_w": 21.35,
+          "bbox_h": 88.84,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 33,
+      "timestamp": 3.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9202,
+          "bbox_x": 636.8,
+          "bbox_y": 261.56,
+          "bbox_w": 33.13,
+          "bbox_h": 99.87,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9062,
+          "bbox_x": 505.85,
+          "bbox_y": 164.41,
+          "bbox_w": 26.31,
+          "bbox_h": 68.94,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8824,
+          "bbox_x": 299.13,
+          "bbox_y": 202.96,
+          "bbox_w": 21.65,
+          "bbox_h": 88.97,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 34,
+      "timestamp": 3.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9286,
+          "bbox_x": 628.14,
+          "bbox_y": 261.13,
+          "bbox_w": 36.77,
+          "bbox_h": 99.17,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9087,
+          "bbox_x": 500.63,
+          "bbox_y": 166.41,
+          "bbox_w": 30.12,
+          "bbox_h": 69.7,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8859,
+          "bbox_x": 299.3,
+          "bbox_y": 202.91,
+          "bbox_w": 21.51,
+          "bbox_h": 89.03,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 35,
+      "timestamp": 3.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9156,
+          "bbox_x": 626.53,
+          "bbox_y": 259.51,
+          "bbox_w": 35.12,
+          "bbox_h": 100.05,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9135,
+          "bbox_x": 499.71,
+          "bbox_y": 168.09,
+          "bbox_w": 28.37,
+          "bbox_h": 70.37,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8845,
+          "bbox_x": 299.21,
+          "bbox_y": 202.74,
+          "bbox_w": 21.79,
+          "bbox_h": 89.26,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 36,
+      "timestamp": 3.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9222,
+          "bbox_x": 494.82,
+          "bbox_y": 169.06,
+          "bbox_w": 27.52,
+          "bbox_h": 70.42,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9132,
+          "bbox_x": 617.05,
+          "bbox_y": 256.07,
+          "bbox_w": 30.19,
+          "bbox_h": 98.18,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8879,
+          "bbox_x": 299.37,
+          "bbox_y": 202.22,
+          "bbox_w": 21.58,
+          "bbox_h": 89.86,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 37,
+      "timestamp": 3.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9288,
+          "bbox_x": 605.21,
+          "bbox_y": 255.25,
+          "bbox_w": 36.86,
+          "bbox_h": 98.45,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9259,
+          "bbox_x": 493.12,
+          "bbox_y": 170.08,
+          "bbox_w": 27.96,
+          "bbox_h": 71.36,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8906,
+          "bbox_x": 299.29,
+          "bbox_y": 201.94,
+          "bbox_w": 21.7,
+          "bbox_h": 90.04,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 38,
+      "timestamp": 3.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9277,
+          "bbox_x": 595.74,
+          "bbox_y": 255.3,
+          "bbox_w": 43.84,
+          "bbox_h": 98.08,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9262,
+          "bbox_x": 491.71,
+          "bbox_y": 171.55,
+          "bbox_w": 28.2,
+          "bbox_h": 72.06,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8915,
+          "bbox_x": 299.38,
+          "bbox_y": 201.89,
+          "bbox_w": 21.85,
+          "bbox_h": 90.12,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 39,
+      "timestamp": 3.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9271,
+          "bbox_x": 592.74,
+          "bbox_y": 252.6,
+          "bbox_w": 37.97,
+          "bbox_h": 95.97,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.926,
+          "bbox_x": 490.44,
+          "bbox_y": 174.26,
+          "bbox_w": 28.03,
+          "bbox_h": 73.31,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.893,
+          "bbox_x": 299.29,
+          "bbox_y": 202.4,
+          "bbox_w": 22.7,
+          "bbox_h": 89.45,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 40,
+      "timestamp": 4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9261,
+          "bbox_x": 587.45,
+          "bbox_y": 250.43,
+          "bbox_w": 33.12,
+          "bbox_h": 96.08,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9239,
+          "bbox_x": 489.93,
+          "bbox_y": 174.22,
+          "bbox_w": 28.6,
+          "bbox_h": 73.18,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.887,
+          "bbox_x": 298.97,
+          "bbox_y": 202.68,
+          "bbox_w": 24.81,
+          "bbox_h": 87.93,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 41,
+      "timestamp": 4.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9244,
+          "bbox_x": 489.21,
+          "bbox_y": 175.93,
+          "bbox_w": 29.12,
+          "bbox_h": 72.63,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9228,
+          "bbox_x": 583.62,
+          "bbox_y": 249.68,
+          "bbox_w": 33.37,
+          "bbox_h": 96.89,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8863,
+          "bbox_x": 299.33,
+          "bbox_y": 203.22,
+          "bbox_w": 27.98,
+          "bbox_h": 85.92,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 42,
+      "timestamp": 4.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9206,
+          "bbox_x": 580.6,
+          "bbox_y": 249.13,
+          "bbox_w": 32.84,
+          "bbox_h": 97.4,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9188,
+          "bbox_x": 488.37,
+          "bbox_y": 176.79,
+          "bbox_w": 29.25,
+          "bbox_h": 74.68,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8972,
+          "bbox_x": 300.33,
+          "bbox_y": 204.79,
+          "bbox_w": 28.83,
+          "bbox_h": 84.16,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 43,
+      "timestamp": 4.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9182,
+          "bbox_x": 577.59,
+          "bbox_y": 248.43,
+          "bbox_w": 31.89,
+          "bbox_h": 96.85,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9144,
+          "bbox_x": 487.6,
+          "bbox_y": 179.02,
+          "bbox_w": 28.87,
+          "bbox_h": 74.91,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9065,
+          "bbox_x": 302.62,
+          "bbox_y": 205,
+          "bbox_w": 27.42,
+          "bbox_h": 83.84,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 44,
+      "timestamp": 4.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9194,
+          "bbox_x": 486.67,
+          "bbox_y": 179.39,
+          "bbox_w": 28.6,
+          "bbox_h": 75.6,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9062,
+          "bbox_x": 304.82,
+          "bbox_y": 205.01,
+          "bbox_w": 27.12,
+          "bbox_h": 83.88,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9056,
+          "bbox_x": 573.56,
+          "bbox_y": 246.53,
+          "bbox_w": 31.44,
+          "bbox_h": 97.95,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 45,
+      "timestamp": 4.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9242,
+          "bbox_x": 565.75,
+          "bbox_y": 242.81,
+          "bbox_w": 31.17,
+          "bbox_h": 94.54,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9166,
+          "bbox_x": 485.78,
+          "bbox_y": 180.58,
+          "bbox_w": 29.03,
+          "bbox_h": 76.72,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9125,
+          "bbox_x": 308.86,
+          "bbox_y": 205.53,
+          "bbox_w": 26.69,
+          "bbox_h": 83.15,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 46,
+      "timestamp": 4.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9205,
+          "bbox_x": 558.42,
+          "bbox_y": 242.27,
+          "bbox_w": 35.12,
+          "bbox_h": 95.22,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9161,
+          "bbox_x": 485.9,
+          "bbox_y": 183.45,
+          "bbox_w": 28.9,
+          "bbox_h": 75.8,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9098,
+          "bbox_x": 310.59,
+          "bbox_y": 206.83,
+          "bbox_w": 26.83,
+          "bbox_h": 81.87,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 47,
+      "timestamp": 4.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9245,
+          "bbox_x": 486.94,
+          "bbox_y": 185.32,
+          "bbox_w": 29.25,
+          "bbox_h": 76.72,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9181,
+          "bbox_x": 553.66,
+          "bbox_y": 242.4,
+          "bbox_w": 36.51,
+          "bbox_h": 94.25,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8805,
+          "bbox_x": 312.42,
+          "bbox_y": 206.86,
+          "bbox_w": 32.03,
+          "bbox_h": 82.12,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 48,
+      "timestamp": 4.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9205,
+          "bbox_x": 488.33,
+          "bbox_y": 186.49,
+          "bbox_w": 29.79,
+          "bbox_h": 77.37,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9099,
+          "bbox_x": 552.32,
+          "bbox_y": 241.03,
+          "bbox_w": 36.74,
+          "bbox_h": 94.35,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8948,
+          "bbox_x": 314.65,
+          "bbox_y": 206.49,
+          "bbox_w": 35.29,
+          "bbox_h": 83.46,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 49,
+      "timestamp": 4.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9258,
+          "bbox_x": 490.57,
+          "bbox_y": 188.04,
+          "bbox_w": 30.25,
+          "bbox_h": 78.36,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9222,
+          "bbox_x": 544.45,
+          "bbox_y": 237.31,
+          "bbox_w": 32.5,
+          "bbox_h": 92.39,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9075,
+          "bbox_x": 319.86,
+          "bbox_y": 206.33,
+          "bbox_w": 31.17,
+          "bbox_h": 84.48,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 50,
+      "timestamp": 5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9283,
+          "bbox_x": 491.8,
+          "bbox_y": 190.73,
+          "bbox_w": 29.94,
+          "bbox_h": 78.85,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9225,
+          "bbox_x": 322.9,
+          "bbox_y": 208.13,
+          "bbox_w": 29.49,
+          "bbox_h": 83.18,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9183,
+          "bbox_x": 542.19,
+          "bbox_y": 236.56,
+          "bbox_w": 31.92,
+          "bbox_h": 92.93,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 51,
+      "timestamp": 5.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9235,
+          "bbox_x": 539.35,
+          "bbox_y": 236.18,
+          "bbox_w": 31.08,
+          "bbox_h": 93.45,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9213,
+          "bbox_x": 493.18,
+          "bbox_y": 193.38,
+          "bbox_w": 29.34,
+          "bbox_h": 78.94,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9062,
+          "bbox_x": 325.51,
+          "bbox_y": 209.38,
+          "bbox_w": 30.34,
+          "bbox_h": 84.43,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 52,
+      "timestamp": 5.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9147,
+          "bbox_x": 531.83,
+          "bbox_y": 233.51,
+          "bbox_w": 30.46,
+          "bbox_h": 93.34,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9122,
+          "bbox_x": 495.92,
+          "bbox_y": 194.99,
+          "bbox_w": 29.69,
+          "bbox_h": 78.54,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9119,
+          "bbox_x": 332.03,
+          "bbox_y": 210.99,
+          "bbox_w": 29.99,
+          "bbox_h": 86.42,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 53,
+      "timestamp": 5.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9064,
+          "bbox_x": 335.93,
+          "bbox_y": 209.48,
+          "bbox_w": 28.77,
+          "bbox_h": 87.98,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.905,
+          "bbox_x": 497.57,
+          "bbox_y": 196.93,
+          "bbox_w": 30.65,
+          "bbox_h": 78.29,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9025,
+          "bbox_x": 527.83,
+          "bbox_y": 231.68,
+          "bbox_w": 29.58,
+          "bbox_h": 89.02,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 54,
+      "timestamp": 5.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9112,
+          "bbox_x": 339.21,
+          "bbox_y": 209.94,
+          "bbox_w": 29.42,
+          "bbox_h": 87.57,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9099,
+          "bbox_x": 500.52,
+          "bbox_y": 199.71,
+          "bbox_w": 30.24,
+          "bbox_h": 78.32,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8937,
+          "bbox_x": 523.97,
+          "bbox_y": 229.99,
+          "bbox_w": 29.46,
+          "bbox_h": 91.01,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 55,
+      "timestamp": 5.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9152,
+          "bbox_x": 343.28,
+          "bbox_y": 210.18,
+          "bbox_w": 29.12,
+          "bbox_h": 87.33,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9126,
+          "bbox_x": 516.09,
+          "bbox_y": 230.12,
+          "bbox_w": 34.12,
+          "bbox_h": 90.9,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8993,
+          "bbox_x": 503.8,
+          "bbox_y": 201.39,
+          "bbox_w": 29.48,
+          "bbox_h": 73.43,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 56,
+      "timestamp": 5.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9228,
+          "bbox_x": 350.89,
+          "bbox_y": 211.96,
+          "bbox_w": 37.87,
+          "bbox_h": 86.54,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8928,
+          "bbox_x": 510.5,
+          "bbox_y": 229.21,
+          "bbox_w": 36.47,
+          "bbox_h": 89.05,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.6095,
+          "bbox_x": 508.9,
+          "bbox_y": 203.19,
+          "bbox_w": 30.56,
+          "bbox_h": 47.88,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8519,
+          "bbox_x": 752.07,
+          "bbox_y": 353.24,
+          "bbox_w": 15.63,
+          "bbox_h": 94.92,
+          "track_id": 4,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 57,
+      "timestamp": 5.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9108,
+          "bbox_x": 352.44,
+          "bbox_y": 212.28,
+          "bbox_w": 36.36,
+          "bbox_h": 86.56,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9066,
+          "bbox_x": 740.98,
+          "bbox_y": 328.06,
+          "bbox_w": 26.73,
+          "bbox_h": 115.08,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8792,
+          "bbox_x": 505.57,
+          "bbox_y": 225.02,
+          "bbox_w": 33.76,
+          "bbox_h": 89.56,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.6881,
+          "bbox_x": 511.84,
+          "bbox_y": 205.82,
+          "bbox_w": 29.67,
+          "bbox_h": 40.46,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 58,
+      "timestamp": 5.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9185,
+          "bbox_x": 362.25,
+          "bbox_y": 212.49,
+          "bbox_w": 38.4,
+          "bbox_h": 88.78,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9121,
+          "bbox_x": 736.46,
+          "bbox_y": 319.71,
+          "bbox_w": 31.24,
+          "bbox_h": 134,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8939,
+          "bbox_x": 499.38,
+          "bbox_y": 224.62,
+          "bbox_w": 29.93,
+          "bbox_h": 89.22,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.917,
+          "bbox_x": 515.96,
+          "bbox_y": 211.81,
+          "bbox_w": 29.58,
+          "bbox_h": 80.53,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 59,
+      "timestamp": 5.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9298,
+          "bbox_x": 365.36,
+          "bbox_y": 214.1,
+          "bbox_w": 42.13,
+          "bbox_h": 90.76,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9265,
+          "bbox_x": 518.13,
+          "bbox_y": 212.52,
+          "bbox_w": 29.21,
+          "bbox_h": 79.86,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9195,
+          "bbox_x": 734.63,
+          "bbox_y": 315.35,
+          "bbox_w": 33.04,
+          "bbox_h": 129.68,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.911,
+          "bbox_x": 496.37,
+          "bbox_y": 224.28,
+          "bbox_w": 28.84,
+          "bbox_h": 89.3,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 60,
+      "timestamp": 6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9411,
+          "bbox_x": 369.67,
+          "bbox_y": 216.39,
+          "bbox_w": 42.28,
+          "bbox_h": 89.82,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9245,
+          "bbox_x": 720.57,
+          "bbox_y": 312.07,
+          "bbox_w": 42.13,
+          "bbox_h": 130.65,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.904,
+          "bbox_x": 493.5,
+          "bbox_y": 223.09,
+          "bbox_w": 28.2,
+          "bbox_h": 89.12,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8957,
+          "bbox_x": 518.84,
+          "bbox_y": 213.15,
+          "bbox_w": 30.72,
+          "bbox_h": 78.86,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 61,
+      "timestamp": 6.1,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9313,
+          "bbox_x": 700.06,
+          "bbox_y": 310.84,
+          "bbox_w": 52.44,
+          "bbox_h": 130.98,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9277,
+          "bbox_x": 381.69,
+          "bbox_y": 216.05,
+          "bbox_w": 31.06,
+          "bbox_h": 91.22,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9226,
+          "bbox_x": 485.61,
+          "bbox_y": 219.31,
+          "bbox_w": 25.82,
+          "bbox_h": 87.41,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9133,
+          "bbox_x": 522.93,
+          "bbox_y": 217.31,
+          "bbox_w": 32.2,
+          "bbox_h": 81.91,
+          "track_id": 2,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 62,
+      "timestamp": 6.2,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9334,
+          "bbox_x": 526.16,
+          "bbox_y": 217.95,
+          "bbox_w": 31.33,
+          "bbox_h": 84.53,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.928,
+          "bbox_x": 699.32,
+          "bbox_y": 307.89,
+          "bbox_w": 51.47,
+          "bbox_h": 130.23,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9202,
+          "bbox_x": 386.88,
+          "bbox_y": 216.81,
+          "bbox_w": 25.83,
+          "bbox_h": 90.09,
+          "track_id": 1,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9139,
+          "bbox_x": 480.93,
+          "bbox_y": 218.32,
+          "bbox_w": 26.42,
+          "bbox_h": 87.72,
+          "track_id": 3,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 63,
+      "timestamp": 6.3,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9384,
+          "bbox_x": 469.13,
+          "bbox_y": 218.35,
+          "bbox_w": 36.46,
+          "bbox_h": 87.69,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9367,
+          "bbox_x": 529.56,
+          "bbox_y": 218.37,
+          "bbox_w": 31.33,
+          "bbox_h": 84.21,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.929,
+          "bbox_x": 696.53,
+          "bbox_y": 304.38,
+          "bbox_w": 44.95,
+          "bbox_h": 127.07,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9053,
+          "bbox_x": 391.19,
+          "bbox_y": 217.86,
+          "bbox_w": 31.47,
+          "bbox_h": 90.35,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 64,
+      "timestamp": 6.4,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9288,
+          "bbox_x": 681.74,
+          "bbox_y": 298.67,
+          "bbox_w": 44.45,
+          "bbox_h": 126.9,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9264,
+          "bbox_x": 465.78,
+          "bbox_y": 217.11,
+          "bbox_w": 34.45,
+          "bbox_h": 85.73,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9249,
+          "bbox_x": 534.68,
+          "bbox_y": 221.89,
+          "bbox_w": 32.28,
+          "bbox_h": 86.57,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8644,
+          "bbox_x": 397.05,
+          "bbox_y": 220.68,
+          "bbox_w": 32.93,
+          "bbox_h": 91.3,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 65,
+      "timestamp": 6.5,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9332,
+          "bbox_x": 677.03,
+          "bbox_y": 297.93,
+          "bbox_w": 42.87,
+          "bbox_h": 127.31,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9315,
+          "bbox_x": 537.32,
+          "bbox_y": 224.97,
+          "bbox_w": 31.84,
+          "bbox_h": 87.38,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9094,
+          "bbox_x": 460.65,
+          "bbox_y": 215.75,
+          "bbox_w": 30.31,
+          "bbox_h": 85,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8885,
+          "bbox_x": 401.85,
+          "bbox_y": 235.07,
+          "bbox_w": 28.82,
+          "bbox_h": 76.96,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 66,
+      "timestamp": 6.6,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9299,
+          "bbox_x": 539.83,
+          "bbox_y": 227.18,
+          "bbox_w": 31.4,
+          "bbox_h": 88.33,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9165,
+          "bbox_x": 458,
+          "bbox_y": 214.32,
+          "bbox_w": 25.91,
+          "bbox_h": 86.65,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.916,
+          "bbox_x": 670.92,
+          "bbox_y": 296.98,
+          "bbox_w": 43.88,
+          "bbox_h": 127.26,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.883,
+          "bbox_x": 404.12,
+          "bbox_y": 238.02,
+          "bbox_w": 38.7,
+          "bbox_h": 74.19,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 67,
+      "timestamp": 6.7,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9272,
+          "bbox_x": 541.97,
+          "bbox_y": 227.32,
+          "bbox_w": 31.87,
+          "bbox_h": 88.12,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9202,
+          "bbox_x": 670.66,
+          "bbox_y": 293.45,
+          "bbox_w": 38.27,
+          "bbox_h": 127.24,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9163,
+          "bbox_x": 454.81,
+          "bbox_y": 214.07,
+          "bbox_w": 25.53,
+          "bbox_h": 86.7,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8762,
+          "bbox_x": 407.75,
+          "bbox_y": 242.2,
+          "bbox_w": 44.35,
+          "bbox_h": 72.4,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 68,
+      "timestamp": 6.8,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9287,
+          "bbox_x": 661.48,
+          "bbox_y": 287.78,
+          "bbox_w": 33.69,
+          "bbox_h": 125.02,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9099,
+          "bbox_x": 547.09,
+          "bbox_y": 231.21,
+          "bbox_w": 33.27,
+          "bbox_h": 87.52,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8924,
+          "bbox_x": 446.14,
+          "bbox_y": 211.82,
+          "bbox_w": 29.85,
+          "bbox_h": 87.32,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8637,
+          "bbox_x": 418.86,
+          "bbox_y": 241.6,
+          "bbox_w": 34.52,
+          "bbox_h": 79.55,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    },
+    {
+      "frame": 69,
+      "timestamp": 6.9,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9231,
+          "bbox_x": 645.34,
+          "bbox_y": 286.62,
+          "bbox_w": 44.17,
+          "bbox_h": 123.15,
+          "track_id": 4,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.9124,
+          "bbox_x": 550.66,
+          "bbox_y": 233.88,
+          "bbox_w": 33.36,
+          "bbox_h": 89.47,
+          "track_id": 2,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.8353,
+          "bbox_x": 445.58,
+          "bbox_y": 210.79,
+          "bbox_w": 23.49,
+          "bbox_h": 84.3,
+          "track_id": 3,
+          "_confirmed": true
+        },
+        {
+          "class_id": 0,
+          "class_label": "person",
+          "confidence": 0.462,
+          "bbox_x": 425.98,
+          "bbox_y": 241.75,
+          "bbox_w": 27.63,
+          "bbox_h": 79.69,
+          "track_id": 1,
+          "_confirmed": true
+        }
+      ]
+    }
+  ],
+  "frame_count": 70,
+  "tracker": "ByteTrack-style: Kalman motion, Hungarian global assignment and spatial appearance",
+  "tracking_enabled": true,
+  "unique_track_ids": 4,
+  "low_confidence_threshold": 0.1,
+  "identity_audit": {
+    "1": "Initial left person, brown jacket and blue jeans",
+    "2": "Initial upper-right person in black clothing",
+    "3": "Red-jacket person entering from the right at frame 16",
+    "4": "Dark-jacket, blue-jeans person entering lower right at frame 56"
+  }
+}
