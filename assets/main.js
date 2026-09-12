@@ -34,10 +34,12 @@
     document.querySelector('#real-output').hidden = selected !== 'vision';
     document.querySelector('#sentinel-graphic').hidden = selected !== 'sentinel';
     document.querySelector('#credit-graphic').hidden = selected !== 'credit';
+    document.querySelector('#fraud-key').hidden = selected !== 'fraud';
     document.querySelector('#motion-toggle').hidden = false;
     document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'FRAME-BY-FRAME INFERENCE &middot; PEDESTRIANS &middot; <a href="https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi" target="_blank" rel="noopener">SOURCE &#8599;</a>' : 'SYSTEM ARCHITECTURE';
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tab.id);
+    panel.dataset.project = selected;
     document.querySelector('#lab-category').textContent = project.category;
     document.querySelector('#lab-heading').innerHTML = project.heading;
     document.querySelector('#lab-description').textContent = project.description;
@@ -80,7 +82,7 @@
     draw();
   }
   function line(x1, y1, x2, y2, color = '#26372e') { context.strokeStyle = color; context.lineWidth = 1; context.beginPath(); context.moveTo(x1, y1); context.lineTo(x2, y2); context.stroke(); }
-  function text(value, x, y, size = 9, color = '#819b8a') { context.font = `${size}px Consolas, monospace`; context.fillStyle = color; context.fillText(value, x, y); }
+  function text(value, x, y, size = 9, color = '#819b8a') { if (selected === 'fraud') return; context.font = `${Math.max(16, size)}px Consolas, monospace`; context.fillStyle = color; context.fillText(value, x, y); }
   function box(x, y, w, h, label, color) {
     context.fillStyle = color + '0a'; context.fillRect(x, y, w, h);
     context.strokeStyle = color + '70'; context.strokeRect(x, y, w, h);
