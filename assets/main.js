@@ -15,11 +15,14 @@
   let selected = 'vision';
   const video = document.querySelector('#detection-video');
   video.controls = false;
-  let detectionFrames = [];
-  fetch('assets/visionlog-tracking-v2.json').then(r => r.json()).then(data => { detectionFrames = data.frames; updateFrame(video.currentTime); }).catch(() => {});
-  function updateFrame(time) { const record = detectionFrames[Math.min(detectionFrames.length - 1, Math.floor((time + .00001) * 10))]; if (record) document.querySelector('#frame-count').textContent = String(record.detections.length).padStart(2, '0'); }
-  if ('requestVideoFrameCallback' in video) { const onFrame = (_, metadata) => { updateFrame(video.paused ? video.currentTime : metadata.mediaTime); video.requestVideoFrameCallback(onFrame); }; video.requestVideoFrameCallback(onFrame); } else video.addEventListener('timeupdate', () => updateFrame(video.currentTime));
-  video.addEventListener('seeked', () => updateFrame(video.currentTime));
+  // Fetch the complete short clip before playback; looping never depends on a range request.
+  let mediaReady = false;
+  video.addEventListener('loadeddata', () => { mediaReady = true; updatePause(); schedule(); }, { once: true });
+  fetch(video.dataset.src).then(response => {
+    if (!response.ok) throw new Error('Video unavailable');
+    return response.blob();
+  }).then(blob => { video.src = URL.createObjectURL(blob); video.load(); })
+    .catch(() => { video.src = video.dataset.src; video.load(); });
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const canvas = document.querySelector('#system-canvas');
   const context = canvas.getContext('2d');
@@ -42,7 +45,7 @@
     document.querySelector('#visual-caption').textContent = project.caption;
     document.querySelector('#lab-demo').href = project.demo;
     canvas.setAttribute('aria-label', project.alt);
-    draw(); schedule();
+    draw(); updatePause(); schedule();
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => select(tab));
@@ -58,9 +61,13 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reducedMotion.matches, visible = false, tick = 0, last = 0, frame = null;
   const pause = document.querySelector('#motion-toggle');
-  function updatePause() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused); pause.setAttribute('aria-pressed', String(paused)); pause.innerHTML = paused ? 'Play animation <span aria-hidden="true">▷</span>' : 'Pause animation <span aria-hidden="true">Ⅱ</span>'; }
-  video.addEventListener('ended', () => { paused = true; updatePause(); pause.textContent = 'Replay clip'; });
-  pause.addEventListener('click', () => { if (selected === 'vision' && video.ended) video.currentTime = 0; paused = !paused; updatePause(); schedule(); });
+  function updatePause() {
+    document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused);
+    pause.disabled = selected === 'vision' && !mediaReady;
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.textContent = pause.disabled ? 'Loading footage?' : paused ? 'Play animation' : 'Pause animation';
+  }
+  pause.addEventListener('click', () => { paused = !paused; updatePause(); schedule(); });
   reducedMotion.addEventListener('change', event => { paused = event.matches; updatePause(); schedule(); });
   updatePause();
   let width = 0, height = 0;
@@ -113,9 +120,21 @@
     if(selected==='vision')return; else if(selected==='credit'||selected==='sentinel')credit();else fraud();
   }
   function animate(time) {frame=null; if(paused||!visible||document.hidden)return; tick+=Math.min((time-last)/1000,.05);last=time;draw();frame=requestAnimationFrame(animate);}
-  function schedule() { document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused || !visible || document.hidden || selected !== 'sentinel'); if (selected === 'vision' && !paused && visible && !document.hidden) video.play().catch(() => { paused = true; updatePause(); }); else video.pause(); if(frame!==null)cancelAnimationFrame(frame);frame=null;if(!paused&&visible&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);} }
+  function schedule() {
+    const running = !paused && visible && !document.hidden;
+    document.querySelector('#sentinel-graphic').classList.toggle('is-paused', !running || selected !== 'sentinel');
+    if (selected === 'vision' && running && mediaReady) {
+      if (video.paused) video.play().catch(error => {
+        // A visibility/tab change can interrupt a pending play. It is not a user pause.
+        if (error.name === 'NotAllowedError') { paused = true; updatePause(); }
+      });
+    } else video.pause();
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    if (running && selected !== 'vision') { last = performance.now(); frame = requestAnimationFrame(animate); }
+  }
   new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(entries=>{visible=entries[0].intersectionRatio >= .5;schedule();},{threshold:[0,.5]}).observe(document.querySelector('#lab-visual'));
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:0}).observe(document.querySelector('#lab-visual'));
   document.addEventListener('visibilitychange',schedule);
   resize();schedule();
 })();

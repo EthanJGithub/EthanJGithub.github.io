@@ -26,3 +26,10 @@ section{padding:100px 0;scroll-margin-top:20px}.showcase{border:1px solid var(--
 .posts{grid-template-columns:repeat(2,minmax(0,1fr));gap:35px}.posts .post{border-top:1px solid var(--line);padding-top:24px}@media(max-width:680px){.posts{grid-template-columns:1fr}}
 
 .sentinel-map{flex:1;min-height:0}.sentinel-map svg{height:100%;min-height:0}.sentinel-map-footer{flex-shrink:0}
+
+/* Match the video viewport to its native ratio: full width without bars or cropped IDs. */
+.real-output{height:auto;min-height:0}
+.detection-image{flex:none;width:100%;height:auto;aspect-ratio:4/3}
+.detection-image video{width:100%;height:100%;object-fit:cover}
+.lab-visual[data-project="vision"]{min-height:0}
+@media(max-width:680px){.real-output{height:auto;min-height:0}.lab-visual[data-project="vision"]{min-height:0}}

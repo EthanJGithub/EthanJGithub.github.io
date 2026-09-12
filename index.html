@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/style.css" />
+<link rel="stylesheet" href="assets/style.css?v=playback3" />
 </head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 
@@ -46,7 +46,7 @@
     <button id="tab-sentinel" role="tab" aria-selected="false" aria-controls="lab-panel" data-project="sentinel" tabindex="-1"><span>04</span> Sentinel <small>SENIOR CARE</small></button>
   </div>
   <div class="lab-body" id="lab-panel" role="tabpanel" aria-labelledby="tab-vision" tabindex="0">
-    <div class="lab-visual" id="lab-visual" data-project="vision"><div class="real-output" id="real-output"><div class="detection-image"><video id="detection-video" controls muted playsinline preload="auto" poster="assets/visionlog-tracking-v2.webp" width="768" height="576" aria-label="Recorded VisionLog pedestrian detection: real moving footage with detections computed for every frame"><source src="assets/visionlog-tracking-v2.mp4" type="video/mp4" /></video></div><div class="result-summary"><div><span class="result-eyebrow">ID TRACKING ON / 7-SECOND CAPTURE</span><h3>Motion with identity.</h3></div><div class="result-total"><strong id="frame-count">02</strong><span>PEOPLE IN<br>THIS FRAME</span></div><a href="assets/visionlog-tracking-v2.json" target="_blank" rel="noopener">Inspect frame data &#8599;</a></div></div><div id="sentinel-graphic" class="sentinel-graphic" hidden aria-label="Sentinel architecture: equipment and evidence flow through a senior-care facility plan to human approval">
+    <div class="lab-visual" id="lab-visual" data-project="vision"><div class="real-output" id="real-output"><div class="detection-image"><video id="detection-video" controls muted loop playsinline preload="auto" data-src="assets/visionlog-tracking-v3.mp4" poster="assets/visionlog-tracking-v3.webp" width="768" height="576" aria-label="Recorded VisionLog pedestrian detection: real moving footage with detections computed for every frame"></video></div><div class="result-summary"><div><span class="result-eyebrow">ID TRACKING ON / 7-SECOND LOOP</span><h3>Motion with identity.</h3></div><a href="assets/visionlog-tracking-v3.json" target="_blank" rel="noopener">Inspect frame data &#8599;</a></div></div><div id="sentinel-graphic" class="sentinel-graphic" hidden aria-label="Sentinel architecture: equipment and evidence flow through a senior-care facility plan to human approval">
 <div class="sentinel-map"><svg viewBox="0 0 760 440" role="img" aria-labelledby="sentinel-map-title"><title id="sentinel-map-title">A care facility surrounded by sourcing, compliance and budget services</title><defs><linearGradient id="care-fill" x2="1" y2="1"><stop stop-color="#233c45"/><stop offset="1" stop-color="#111e22"/></linearGradient><radialGradient id="care-glow"><stop stop-color="#95c9c5" stop-opacity=".15"/><stop offset="1" stop-color="#95c9c5" stop-opacity="0"/></radialGradient></defs>
 <ellipse cx="380" cy="235" rx="240" ry="190" fill="url(#care-glow)"/><ellipse cx="380" cy="235" rx="245" ry="155" fill="none" stroke="#314b4d" stroke-dasharray="3 9"/>
 <g fill="none" stroke="#42646a"><path class="care-flow" d="M140 125 Q240 125 295 205 M620 125 Q520 125 465 205 M145 335 Q240 330 298 275 M615 335 Q525 330 464 275"/></g>
@@ -201,6 +201,6 @@
   </div>
 </footer>
 
-<script src="assets/main.js" defer></script>
+<script src="assets/main.js?v=playback3" defer></script>
 </body>
 </html>
