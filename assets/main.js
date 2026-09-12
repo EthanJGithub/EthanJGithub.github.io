@@ -33,6 +33,7 @@
     document.querySelector('#lab-visual').dataset.project = selected;
     document.querySelector('#real-output').hidden = selected !== 'vision';
     document.querySelector('#sentinel-graphic').hidden = selected !== 'sentinel';
+    document.querySelector('#credit-graphic').hidden = selected !== 'credit';
     document.querySelector('#motion-toggle').hidden = false;
     document.querySelector('#visual-note').innerHTML = selected === 'vision' ? 'FRAME-BY-FRAME INFERENCE &middot; PEDESTRIANS &middot; <a href="https://github.com/opencv/opencv/blob/4.x/samples/data/vtest.avi" target="_blank" rel="noopener">SOURCE &#8599;</a>' : 'SYSTEM ARCHITECTURE';
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
@@ -63,6 +64,7 @@
   const pause = document.querySelector('#motion-toggle');
   function updatePause() {
     document.querySelector('#sentinel-graphic').classList.toggle('is-paused', paused);
+    document.querySelector('#credit-graphic').classList.toggle('is-paused', paused);
     pause.disabled = selected === 'vision' && !mediaReady;
     pause.setAttribute('aria-pressed', String(paused));
     pause.textContent = pause.disabled ? 'Loading footage?' : paused ? 'Play animation' : 'Pause animation';
@@ -123,6 +125,7 @@
   function schedule() {
     const running = !paused && visible && !document.hidden;
     document.querySelector('#sentinel-graphic').classList.toggle('is-paused', !running || selected !== 'sentinel');
+    document.querySelector('#credit-graphic').classList.toggle('is-paused', !running || selected !== 'credit');
     if (selected === 'vision' && running && mediaReady) {
       if (video.paused) video.play().catch(error => {
         // A visibility/tab change can interrupt a pending play. It is not a user pause.
@@ -131,7 +134,7 @@
     } else video.pause();
     if (frame !== null) cancelAnimationFrame(frame);
     frame = null;
-    if (running && selected !== 'vision') { last = performance.now(); frame = requestAnimationFrame(animate); }
+    if (running && selected === 'fraud') { last = performance.now(); frame = requestAnimationFrame(animate); }
   }
   new ResizeObserver(resize).observe(canvas);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:0}).observe(document.querySelector('#lab-visual'));

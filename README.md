@@ -18,3 +18,5 @@ The VisionLog panel plays a continuous seven-second pedestrian tracking clip at 
 `assets/visionlog-tracking-v3.json` records actual model observations, source/settings, identity audit and video checksum. There are no scene cuts, manually rewritten IDs or generated detections. This curated result is not a guarantee for arbitrary footage. Versioned media filenames prevent stale video/metadata mixtures.
 
 Other systems-lab panels illustrate system architecture. Pause/play, offscreen pausing, tab switching and reduced-motion preferences control the animations. Sentinel has a dedicated architectural SVG and a detailed article at `articles/sentinel.html`.
+
+CredAgent uses an animated decision dossier with application inputs, illustrative SHAP contributions, retrieved policy evidence, human review and an audit chain. Copper and ivory accents match the app. On mobile the dossier and evidence cards stack; animation respects pause and reduced motion.
