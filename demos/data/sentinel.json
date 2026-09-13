@@ -1,0 +1,1177 @@
+{
+  "recorded": true,
+  "execution": "Local Python graph with real Groq reasoning; local catalog and keyword retrieval; no order submitted",
+  "request": {
+    "request": "Equip a 12-bed memory-care wing with resident rooms, bathrooms, a nursing station and common areas.",
+    "facility_name": "Cedarwood Senior Living",
+    "state": "NC",
+    "care_type": "memory_care",
+    "budget_usd": 200000.0,
+    "contract_id": "DSSI-DIRECT",
+    "plant_violation_sku": "TRAP-NC-001"
+  },
+  "result": {
+    "plan_id": "plan_d6b70d26bd",
+    "status": "AWAITING_APPROVAL",
+    "spec": {
+      "summary": "Equip a 12-bed memory care wing within $200,000, CMS/Life-Safety compliant.",
+      "rooms": [
+        {
+          "room_type": "resident_room",
+          "count": 12,
+          "categories": [
+            "resident_bed",
+            "mattress",
+            "nurse_call",
+            "furniture",
+            "flooring",
+            "casework_door",
+            "fall_prevention"
+          ]
+        },
+        {
+          "room_type": "bathroom",
+          "count": 12,
+          "categories": [
+            "bathroom_safety",
+            "nurse_call"
+          ]
+        },
+        {
+          "room_type": "nursing_station",
+          "count": 1,
+          "categories": [
+            "nursing_station"
+          ]
+        },
+        {
+          "room_type": "common_area",
+          "count": 2,
+          "categories": [
+            "common_area",
+            "mobility"
+          ]
+        },
+        {
+          "room_type": "corridor",
+          "count": 1,
+          "categories": [
+            "flooring"
+          ]
+        }
+      ],
+      "constraints": [
+        "Total budget $200,000",
+        "CMS Appendix PP / 42 CFR \u00a7483.90",
+        "NFPA 101 (2012) Life Safety",
+        "memory_care resident population"
+      ],
+      "budget_usd": 200000.0
+    },
+    "cart": [
+      {
+        "sku": "DS-RES-1020",
+        "name": "Invacare-equiv Bariatric Bed",
+        "category": "resident_bed",
+        "subcategory": "Bariatric Bed",
+        "room_type": "resident_room",
+        "qty": 12,
+        "unit_price": 3056.94,
+        "list_price": 3936.14,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "entrapment_compliant": true,
+          "astm_f1858": true,
+          "adjustable_height": true,
+          "cleanable_surface": true,
+          "weight_capacity_lb": 300
+        }
+      },
+      {
+        "sku": "DS-MAT-1041",
+        "name": "RestWell Gel-Hybrid",
+        "category": "mattress",
+        "subcategory": "Gel-Hybrid",
+        "room_type": "resident_room",
+        "qty": 12,
+        "unit_price": 732.14,
+        "list_price": 930.64,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "cleanable_surface": true,
+          "fluid_proof_cover": true,
+          "weight_capacity_lb": 400
+        }
+      },
+      {
+        "sku": "DS-NUR-1079",
+        "name": "Rauland-equiv Pull-Cord Station",
+        "category": "nurse_call",
+        "subcategory": "Pull-Cord Station",
+        "room_type": "resident_room",
+        "qty": 12,
+        "unit_price": 462.31,
+        "list_price": 560.52,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "covers_bedside": true,
+          "covers_toilet_bath": true,
+          "relays_to_staff": true,
+          "weight_capacity_lb": 350
+        }
+      },
+      {
+        "sku": "DS-FUR-1159",
+        "name": "ComfortLine Nightstand",
+        "category": "furniture",
+        "subcategory": "Nightstand",
+        "room_type": "resident_room",
+        "qty": 24,
+        "unit_price": 445.86,
+        "list_price": 543.22,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "cleanable_surface": true,
+          "non_porous": true,
+          "individual_closet": true,
+          "weight_capacity_lb": 600
+        }
+      },
+      {
+        "sku": "DS-FLO-1108",
+        "name": "Tarkett-equiv Carpet Tile (Low-Pile)",
+        "category": "flooring",
+        "subcategory": "Carpet Tile (Low-Pile)",
+        "room_type": "resident_room",
+        "qty": 3000,
+        "unit_price": 5.29,
+        "list_price": 6.5,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "slip_resistant": true,
+          "cleanable_surface": true,
+          "non_porous": true,
+          "weight_capacity_lb": 600
+        }
+      },
+      {
+        "sku": "DS-CAS-1129",
+        "name": "BuildRight Bathroom Door",
+        "category": "casework_door",
+        "subcategory": "Bathroom Door",
+        "room_type": "resident_room",
+        "qty": 12,
+        "unit_price": 941.1,
+        "list_price": 1108.95,
+        "contract_id": "GPO-VIZIENT",
+        "attributes": {
+          "clear_width_in": 44,
+          "positive_latching": true,
+          "self_closing": true,
+          "weight_capacity_lb": 350
+        }
+      },
+      {
+        "sku": "DS-FAL-1207",
+        "name": "GuardCare Fall-Alert Sensor Pad",
+        "category": "fall_prevention",
+        "subcategory": "Fall-Alert Sensor Pad",
+        "room_type": "resident_room",
+        "qty": 12,
+        "unit_price": 225.73,
+        "list_price": 283.7,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "slip_resistant": true,
+          "cleanable_surface": true,
+          "weight_capacity_lb": 600
+        }
+      },
+      {
+        "sku": "DS-BAT-1185",
+        "name": "SafeAssist Raised Toilet Seat",
+        "category": "bathroom_safety",
+        "subcategory": "Raised Toilet Seat",
+        "room_type": "bathroom",
+        "qty": 24,
+        "unit_price": 209.35,
+        "list_price": 274.78,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "grab_bar_height_in": 34,
+          "slip_resistant": true,
+          "weight_capacity_lb": 350
+        }
+      },
+      {
+        "sku": "DS-NUR-1079",
+        "name": "Rauland-equiv Pull-Cord Station",
+        "category": "nurse_call",
+        "subcategory": "Pull-Cord Station",
+        "room_type": "bathroom",
+        "qty": 12,
+        "unit_price": 462.31,
+        "list_price": 560.52,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "covers_bedside": true,
+          "covers_toilet_bath": true,
+          "relays_to_staff": true,
+          "weight_capacity_lb": 350
+        }
+      },
+      {
+        "sku": "DS-NUR-1270",
+        "name": "MedTech Documentation Cart",
+        "category": "nursing_station",
+        "subcategory": "Documentation Cart",
+        "room_type": "nursing_station",
+        "qty": 3,
+        "unit_price": 2016.35,
+        "list_price": 2573.47,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "lockable": true,
+          "cleanable_surface": true,
+          "weight_capacity_lb": 600
+        }
+      },
+      {
+        "sku": "DS-COM-1258",
+        "name": "ComfortLine Wall TV + Mount",
+        "category": "common_area",
+        "subcategory": "Wall TV + Mount",
+        "room_type": "common_area",
+        "qty": 8,
+        "unit_price": 1040.14,
+        "list_price": 1369.85,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "cleanable_surface": true,
+          "wheelchair_accessible": true,
+          "weight_capacity_lb": 400
+        }
+      },
+      {
+        "sku": "DS-MOB-1231",
+        "name": "Invacare-equiv Ceiling Lift",
+        "category": "mobility",
+        "subcategory": "Ceiling Lift",
+        "room_type": "common_area",
+        "qty": 2,
+        "unit_price": 3423.39,
+        "list_price": 4327.32,
+        "contract_id": "DSSI-DIRECT",
+        "attributes": {
+          "weight_capacity_lb": 400,
+          "cleanable_surface": true
+        }
+      },
+      {
+        "sku": "DS-FLO-1108",
+        "name": "Tarkett-equiv Carpet Tile (Low-Pile)",
+        "category": "flooring",
+        "subcategory": "Carpet Tile (Low-Pile)",
+        "room_type": "corridor",
+        "qty": 250,
+        "unit_price": 5.29,
+        "list_price": 6.5,
+        "contract_id": "GPO-PREMIER",
+        "attributes": {
+          "slip_resistant": true,
+          "cleanable_surface": true,
+          "non_porous": true,
+          "weight_capacity_lb": 600
+        }
+      },
+      {
+        "sku": "TRAP-NC-001",
+        "name": "ValueCall Bedside-Only Call Station",
+        "category": "nurse_call",
+        "subcategory": "Bedside Call Station",
+        "room_type": "resident_room",
+        "qty": 1,
+        "unit_price": 94.33,
+        "list_price": 110.0,
+        "contract_id": "GPO-VIZIENT",
+        "attributes": {
+          "covers_bedside": true,
+          "covers_toilet_bath": false,
+          "relays_to_staff": true
+        }
+      }
+    ],
+    "findings": [
+      {
+        "sku": "DS-RES-1020",
+        "name": "Invacare-equiv Bariatric Bed",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "bed_entrapment",
+        "rationale": "The bed is marked **entrapment_compliant: true**, satisfying the rule that \u201cBeds and rails procured for at-risk residents should document conformance with this guidance and ASTM F1858",
+        "citations": [
+          {
+            "reg_id": "fda-bed-entrapment-2006",
+            "source": "FDA Hospital Bed System Dimensional Guidance (2006) + ASTM F1858",
+            "citation": "FDA Guidance for Industry and FDA Staff: Hospital Bed System Dimensions and Assessment of Entrapment Risk (March 2006)",
+            "quote": "FDA dimensional guidance to reduce hospital bed entrapment defines seven entrapment zones. Key limits: openings in the rail and between rail and mattress should be small enough to prevent head/neck entrapment - generally any gap that could permit a 4.75 inch (120 mm) diameter cone (head) or smaller dimensions for the neck should be avoided. Beds and rails procured for at-risk residents should document conformance with this guidance and ASTM F1858 hospital bed standards.",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-MAT-1041",
+        "name": "RestWell Gel-Hybrid",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "Resident-area surfaces must be cleanable/non-porous for infection control. The item satisfies this requirement per the cited regulation.",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-NUR-1079",
+        "name": "Rauland-equiv Pull-Cord Station",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "call_system_coverage",
+        "rationale": "Resident call system must reach both bedside and toilet/bathing facilities. The item satisfies this requirement per the cited regulation.",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-g",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(g)",
+            "quote": "Resident call system. The facility must be adequately equipped to allow residents to call for staff assistance through a communication system which relays the call directly to a staff member or to a centralized staff work area from (1) each resident's bedside; and (2) toilet and bathing facilities.",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-FUR-1159",
+        "name": "ComfortLine Nightstand",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "The ComfortLine Nightstand meets the infection\u2011control requirement because it has a cleanable surface and is non\u2011porous, satisfying the regulation that \u201cfurnishings \u2026 should present cleanable",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-FLO-1108",
+        "name": "Tarkett-equiv Carpet Tile (Low-Pile)",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "Resident-area surfaces must be cleanable/non-porous for infection control. The item satisfies this requirement per the cited regulation.",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-CAS-1129",
+        "name": "BuildRight Bathroom Door",
+        "room_type": "resident_room",
+        "verdict": "ABSTAIN",
+        "rule_id": null,
+        "rationale": "Retrieved regulation did not directly support a compliance assertion; blocked by the hallucination gate and flagged for human review.",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-e-1-ii",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(e)(1)(ii)",
+            "quote": "Resident rooms. Bedrooms must measure at least 80 square feet per resident in multiple resident bedrooms, and at least 100 square feet in single resident rooms.",
+            "score": 5.537
+          }
+        ],
+        "grounded": false,
+        "gate_blocked": true,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-FAL-1207",
+        "name": "GuardCare Fall-Alert Sensor Pad",
+        "room_type": "resident_room",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "The GuardCare Fall\u2011Alert Sensor Pad meets the infection\u2011control requirement because it is \u201ccleanable, non\u2011porous, disinfectable\u201d per 42\u202fCFR\u202f\u00a7483.80",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-BAT-1185",
+        "name": "SafeAssist Raised Toilet Seat",
+        "room_type": "bathroom",
+        "verdict": "PASS",
+        "rule_id": null,
+        "rationale": "Reviewed against retrieved regulation. The item satisfies this requirement per the cited regulation.",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-f",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(f)",
+            "quote": "Bathroom facilities. Each resident room must be equipped with or located near toilet and bathing facilities.",
+            "score": 8.2206
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-NUR-1079",
+        "name": "Rauland-equiv Pull-Cord Station",
+        "room_type": "bathroom",
+        "verdict": "PASS",
+        "rule_id": "call_system_coverage",
+        "rationale": "The Rauland\u2011equivalent Pull\u2011Cord Station covers both bedside and toilet/bath facilities and relays calls directly to staff, meeting the regulation that \u201cthe facility must be adequately equipped to allow residents to call for staff assistance through a communication system which relays the call directly to a staff member or to a centralized staff work area from (1) each resident's bedside; and (2) toilet and bathing facilities",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-g",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(g)",
+            "quote": "Resident call system. The facility must be adequately equipped to allow residents to call for staff assistance through a communication system which relays the call directly to a staff member or to a centralized staff work area from (1) each resident's bedside; and (2) toilet and bathing facilities.",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-NUR-1270",
+        "name": "MedTech Documentation Cart",
+        "room_type": "nursing_station",
+        "verdict": "PASS",
+        "rule_id": null,
+        "rationale": "Reviewed against retrieved regulation. The item satisfies this requirement per the cited regulation.",
+        "citations": [
+          {
+            "reg_id": "nfpa101-2012-18.2.3.4-corridor",
+            "source": "NFPA 101 Life Safety Code (2012 ed.), Ch.18 New Health Care Occupancies",
+            "citation": "NFPA 101 (2012) \u00a718.2.3.4 (ref. via 42 CFR \u00a7483.90(a))",
+            "quote": "Reference summary of NFPA 101 (2012) for new health care occupancies: aisles, corridors, and ramps required for exit access in a nursing home shall be at least 8 ft (2440 mm) in clear and unobstructed width, with limited exceptions. CMS adopts the 2012 Life Safety Code via 42 CFR \u00a7483.90(a). (Paraphrased reference; consult the licensed NFPA text for exact wording.)",
+            "score": 0.6559
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-COM-1258",
+        "name": "ComfortLine Wall TV + Mount",
+        "room_type": "common_area",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "The ComfortLine Wall TV + Mount provides a cleanable surface, which satisfies the infection\u2011control requirement that resident\u2011area furnishings \u201cshould present cleanable, non\u2011porous, disinfectable surfaces\u201d per 42\u202fCFR\u202f\u00a7483.80. Therefore the item passes.",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-MOB-1231",
+        "name": "Invacare-equiv Ceiling Lift",
+        "room_type": "common_area",
+        "verdict": "ABSTAIN",
+        "rule_id": null,
+        "rationale": "Retrieved regulation did not directly support a compliance assertion; blocked by the hallucination gate and flagged for human review.",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-h",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(h)",
+            "quote": "Dining and resident activities. The facility must provide one or more rooms designated for resident dining and activities. These rooms must be well-lighted; well-ventilated; adequately furnished; and have sufficient space to accommodate all activities.",
+            "score": 4.5018
+          }
+        ],
+        "grounded": false,
+        "gate_blocked": true,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "DS-FLO-1108",
+        "name": "Tarkett-equiv Carpet Tile (Low-Pile)",
+        "room_type": "corridor",
+        "verdict": "PASS",
+        "rule_id": "cleanable_surfaces",
+        "rationale": "The Tarkett carpet tile is PASS because it is cleanable and non\u2011porous, satisfying the infection\u2011control requirement that resident\u2011area flooring \"should present cleanable, non\u2011porous, disinfectable surfaces\" (42",
+        "citations": [
+          {
+            "reg_id": "cms-infection-surfaces-f880",
+            "source": "CMS State Operations Manual Appendix PP",
+            "citation": "42 CFR \u00a7483.80 / F-tag F880 (Infection Prevention & Control)",
+            "quote": "Reference summary of 42 CFR \u00a7483.80 / F880: the facility must establish and maintain an infection prevention and control program. Furnishings, mattresses, and flooring procured for resident areas should present cleanable, non-porous, disinfectable surfaces to support effective environmental cleaning. (Paraphrased reference.)",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": null
+      },
+      {
+        "sku": "TRAP-NC-001",
+        "name": "ValueCall Bedside-Only Call Station",
+        "room_type": "resident_room",
+        "verdict": "VIOLATION",
+        "rule_id": "call_system_coverage",
+        "rationale": "Resident call system must reach both bedside and toilet/bathing facilities. The item does not satisfy this requirement; see citation.",
+        "citations": [
+          {
+            "reg_id": "cfr-483.90-g",
+            "source": "42 CFR 483.90",
+            "citation": "42 CFR \u00a7483.90(g)",
+            "quote": "Resident call system. The facility must be adequately equipped to allow residents to call for staff assistance through a communication system which relays the call directly to a staff member or to a centralized staff work area from (1) each resident's bedside; and (2) toilet and bathing facilities.",
+            "score": 1.0
+          }
+        ],
+        "grounded": true,
+        "gate_blocked": false,
+        "recommended_substitution": {
+          "sku": "DS-NUR-1096",
+          "name": "TekTone-equiv Bedside Call Station",
+          "price": 156.42
+        }
+      }
+    ],
+    "budget": {
+      "budget_usd": 200000.0,
+      "subtotal_usd": 124795.18,
+      "savings_vs_list_usd": 31971.31,
+      "within_budget": true,
+      "swaps": []
+    },
+    "audit": [
+      {
+        "agent": "Planner",
+        "decision": {
+          "rooms": 5,
+          "summary": "Equip a 12-bed memory care wing within $200,000, CMS/Life-Safety compliant."
+        },
+        "ts": "2026-09-12T22:07:14.183951+00:00"
+      },
+      {
+        "agent": "Sourcing",
+        "decision": {
+          "lines": 14,
+          "categories": 11
+        },
+        "ts": "2026-09-12T22:07:14.184943+00:00"
+      },
+      {
+        "agent": "Compliance",
+        "decision": {
+          "violations": 1,
+          "abstentions": 2,
+          "gate_blocked": 2,
+          "checked": 14
+        },
+        "ts": "2026-09-12T22:07:21.567570+00:00"
+      },
+      {
+        "agent": "Budget",
+        "decision": {
+          "subtotal": 124795.18,
+          "within_budget": true,
+          "swaps": 0
+        },
+        "ts": "2026-09-12T22:07:21.568083+00:00"
+      },
+      {
+        "agent": "Audit",
+        "decision": {
+          "plan_finalized": true,
+          "violations": 1,
+          "abstentions": 2,
+          "lines": 14
+        },
+        "ts": "2026-09-12T22:07:21.568376+00:00"
+      }
+    ],
+    "trace": [
+      {
+        "node": "Planner",
+        "event": "start",
+        "detail": "Planner started",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Planner",
+        "event": "model",
+        "detail": "decompose request -> procurement spec",
+        "model": "heuristic-local",
+        "tokens_in": 24,
+        "tokens_out": 184,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Planner",
+        "event": "end",
+        "detail": "Planner done",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.2
+      },
+      {
+        "node": "Sourcing",
+        "event": "start",
+        "detail": "Sourcing started",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: resident_bed@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: mattress@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: nurse_call@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: furniture@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: flooring@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: casework_door@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: fall_prevention@resident_room: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: bathroom_safety@bathroom: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: nurse_call@bathroom: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: nursing_station@nursing_station: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: common_area@common_area: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: mobility@common_area: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "catalog_search: flooring@corridor: 20 hits",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "tool",
+        "detail": "plant_violation: injected TRAP-NC-001 for demo",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Sourcing",
+        "event": "end",
+        "detail": "Sourcing done",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.5
+      },
+      {
+        "node": "Compliance",
+        "event": "start",
+        "detail": "Compliance started",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-RES-1020 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 300,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-MAT-1041 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 18,
+        "tokens_out": 34,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-NUR-1079 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 18,
+        "tokens_out": 34,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-FUR-1159 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 248,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-FLO-1108 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 18,
+        "tokens_out": 34,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "tool",
+        "detail": "reg_search: casework_door: top=5.537",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-CAS-1129 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 204,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "gate",
+        "detail": "hallucination gate BLOCKED ungrounded claim on DS-CAS-1129 -> ABSTAIN",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-FAL-1207 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 245,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "tool",
+        "detail": "reg_search: bathroom_safety: top=8.2206",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-BAT-1185 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 9,
+        "tokens_out": 25,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-NUR-1079 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 243,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "tool",
+        "detail": "reg_search: nursing_station: top=0.6559",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-NUR-1270 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 9,
+        "tokens_out": 25,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-COM-1258 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 243,
+        "tokens_out": 166,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "tool",
+        "detail": "reg_search: mobility: top=4.5018",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-MOB-1231 -> PASS",
+        "model": "heuristic-local",
+        "tokens_in": 9,
+        "tokens_out": 25,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "gate",
+        "detail": "hallucination gate BLOCKED ungrounded claim on DS-MOB-1231 -> ABSTAIN",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: DS-FLO-1108 -> PASS",
+        "model": "openai/gpt-oss-20b",
+        "tokens_in": 254,
+        "tokens_out": 200,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "model",
+        "detail": "reason: TRAP-NC-001 -> VIOLATION",
+        "model": "heuristic-local",
+        "tokens_in": 18,
+        "tokens_out": 33,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "tool",
+        "detail": "find_substitution: TRAP-NC-001 -> DS-NUR-1096",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "gate",
+        "detail": "1 violation(s) caught, 2 abstention(s) (2 blocked by hallucination gate), 12 grounded citations",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Compliance",
+        "event": "end",
+        "detail": "Compliance done",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 7382.4
+      },
+      {
+        "node": "Budget",
+        "event": "start",
+        "detail": "Budget started",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Budget",
+        "event": "tool",
+        "detail": "get_contract_price: 12 priced",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Budget",
+        "event": "end",
+        "detail": "Budget done",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.1
+      },
+      {
+        "node": "Audit",
+        "event": "start",
+        "detail": "Audit started",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Audit",
+        "event": "gate",
+        "detail": "immutable decision record written",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      },
+      {
+        "node": "Audit",
+        "event": "end",
+        "detail": "Audit done",
+        "model": null,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "cost_usd": 0.0,
+        "latency_ms": 0.0
+      }
+    ],
+    "metrics": {
+      "total_cost_usd": 0.0,
+      "cost_ceiling_usd": 0.5,
+      "over_budget": false,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "by_model": {},
+      "by_node": {
+        "Planner": {
+          "latency_ms": 0.2,
+          "cost": 0.0
+        },
+        "Sourcing": {
+          "latency_ms": 0.5,
+          "cost": 0.0
+        },
+        "Compliance": {
+          "latency_ms": 7382.4,
+          "cost": 0.0
+        },
+        "Budget": {
+          "latency_ms": 0.1,
+          "cost": 0.0
+        }
+      },
+      "tool_calls": 20,
+      "tool_failures": 0,
+      "tool_success_rate": 1.0,
+      "total_latency_ms": 7383.2,
+      "models": {
+        "route": "heuristic-local",
+        "reason": "openai/gpt-oss-20b",
+        "cross_check": "openai/gpt-oss-20b",
+        "embed": "local-keyword-rag"
+      },
+      "using_real_models": true,
+      "tenant_id": "cedarwood"
+    },
+    "abstentions": 2,
+    "violations": 1
+  }
+}

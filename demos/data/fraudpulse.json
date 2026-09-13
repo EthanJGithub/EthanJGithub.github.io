@@ -1,0 +1,235 @@
+{
+  "recorded": true,
+  "execution": "Local inference on 12 committed example transactions; no transactions submitted to a payment system",
+  "metadata": {
+    "model_version": "fraud-v2.0",
+    "dataset": "ULB Credit-Card Fraud",
+    "schema": {
+      "target_col": "Class",
+      "feature_cols": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27",
+        "V28",
+        "Amount"
+      ],
+      "amount_col": "Amount",
+      "time_col": "Time",
+      "positive_label": 1,
+      "name": "ULB Credit-Card Fraud"
+    },
+    "features": [
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V5",
+      "V6",
+      "V7",
+      "V8",
+      "V9",
+      "V10",
+      "V11",
+      "V12",
+      "V13",
+      "V14",
+      "V15",
+      "V16",
+      "V17",
+      "V18",
+      "V19",
+      "V20",
+      "V21",
+      "V22",
+      "V23",
+      "V24",
+      "V25",
+      "V26",
+      "V27",
+      "V28",
+      "Amount",
+      "log_amount",
+      "hour"
+    ],
+    "n_features": 31,
+    "n_train": 170883,
+    "n_validation": 56962,
+    "n_test": 56962,
+    "evaluation_protocol": "stratified 60/20/20; early stopping and thresholds on validation only; final test untouched during selection",
+    "split_seeds": [
+      42,
+      43
+    ],
+    "validation_pr_auc": 0.8814598224811538,
+    "test_review_rate": 0.0019486675327411256,
+    "fraud_rate": 0.001727485630620034,
+    "scale_pos_weight": 578.26,
+    "pr_auc": 0.8755,
+    "roc_auc": 0.9829,
+    "flag_threshold": 0.1365,
+    "review_threshold": 0.05,
+    "precision_at_flag": 0.8235,
+    "recall_at_flag": 0.8571,
+    "f1_at_flag": 0.84,
+    "confusion_at_flag": {
+      "tp": 84,
+      "fp": 18,
+      "fn": 14,
+      "tn": 56846
+    },
+    "anomaly_percentiles": {
+      "50": 0.3976099834318804,
+      "90": 0.45428993901784814,
+      "95": 0.4879669563518574,
+      "99": 0.5844255499635442
+    },
+    "data_source": "huggingface:David-Egea/Creditcard-fraud-detection",
+    "trained_on_real_data": true
+  },
+  "results": [
+    {
+      "amount": 7.24,
+      "result": {
+        "fraud_probability": 0.0,
+        "anomaly_score": 0.79,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 16.57,
+      "result": {
+        "fraud_probability": 0.0,
+        "anomaly_score": 0.6477,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 55.85,
+      "result": {
+        "fraud_probability": 0.0,
+        "anomaly_score": 0.7105,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 277.12,
+      "result": {
+        "fraud_probability": 2e-06,
+        "anomaly_score": 0.6409,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 1.0,
+      "result": {
+        "fraud_probability": 0.999993,
+        "anomaly_score": 0.9626,
+        "is_anomaly": false,
+        "decision": "FLAG",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 110.0,
+      "result": {
+        "fraud_probability": 0.0,
+        "anomaly_score": 0.7038,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 1.0,
+      "result": {
+        "fraud_probability": 0.999997,
+        "anomaly_score": 1.0329,
+        "is_anomaly": false,
+        "decision": "FLAG",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 130.21,
+      "result": {
+        "fraud_probability": 0.999999,
+        "anomaly_score": 0.9083,
+        "is_anomaly": false,
+        "decision": "FLAG",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 635.1,
+      "result": {
+        "fraud_probability": 7.8e-05,
+        "anomaly_score": 0.8749,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 274.67,
+      "result": {
+        "fraud_probability": 7e-06,
+        "anomaly_score": 0.6857,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 27.58,
+      "result": {
+        "fraud_probability": 0.0,
+        "anomaly_score": 0.7119,
+        "is_anomaly": false,
+        "decision": "ALLOW",
+        "model_version": "fraud-v2.0"
+      }
+    },
+    {
+      "amount": 1.0,
+      "result": {
+        "fraud_probability": 0.999942,
+        "anomaly_score": 1.0943,
+        "is_anomaly": false,
+        "decision": "FLAG",
+        "model_version": "fraud-v2.0"
+      }
+    }
+  ]
+}

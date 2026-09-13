@@ -34,7 +34,7 @@
 <div class="meta"><span>June 2026</span><span class="sep">·</span><span>8 min read</span><span class="sep">·</span><span>CredAgent</span></div>
 <div class="art-cta"><a class="btn btn-primary" href="https://ethanjgithub-credagent-streamlit-app-kruhoy.streamlit.app/" target="_blank" rel="noopener">Open live demo ↗</a><a class="btn btn-ghost" href="https://github.com/EthanJGithub/CredAgent" target="_blank" rel="noopener">View code ↗</a></div>
 <div class="prose"><p><strong>CredAgent</strong> underwrites consumer loans end to end with a team of cooperating agents — and it's designed so that every decision it makes can be reproduced, explained, and defended. In lending, a model that can't explain itself is a liability, not an asset. So CredAgent treats <strong>explainability, fairness, and auditability as requirements</strong>, not extras.</p>
-<div class="metrics"><div class="metric"><div class="n grad">5</div><div class="l">cooperating agents</div></div><div class="metric"><div class="n grad">0.76</div><div class="l">XGBoost ROC-AUC</div></div><div class="metric"><div class="n grad">307K</div><div class="l">real loan applications</div></div></div>
+<div class="metrics"><div class="metric"><div class="n grad">5</div><div class="l">cooperating agents</div></div><div class="metric"><div class="n grad">0.7459</div><div class="l">FORM-INPUT TEST ROC-AUC</div></div><div class="metric"><div class="n grad">307K</div><div class="l">real loan applications</div></div></div>
 <h2>The pipeline</h2>
 <p>CredAgent is a <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener">LangGraph</a> state machine of five agents, each with one job, passing an explicit shared state forward:</p>
 <pre><code>Ingestion -> Risk Scoring -> Policy Compliance -> Decision -> Audit</code></pre>
@@ -43,14 +43,14 @@
 <li><strong>Risk Scoring</strong> runs an XGBoost model and attributes the score with SHAP.</li>
 <li><strong>Policy Compliance</strong> checks the decision against regulation via RAG over policy text.</li>
 <li><strong>Decision</strong> produces an approve/deny/refer outcome and the adverse-action reasons.</li>
-<li><strong>Audit</strong> writes an immutable record of inputs, model version, prompts, and outputs.</li>
+<li><strong>Audit</strong> writes a persisted record of inputs, model version, prompts, and outputs.</li>
 </ul>
 <p>I chose LangGraph specifically because the transitions are <strong>deterministic and inspectable</strong>. For a regulated workflow you want to know exactly which state produced which output — a graph gives you that; a free-form agent loop does not.</p>
 <h2>The model, and why it's explainable</h2>
-<p>The risk model is an XGBoost classifier trained on the real <strong>307K-row Home Credit dataset</strong> (246K train / 61K validation), reaching a validation <strong>ROC-AUC of 0.76</strong>. Every individual decision is attributed with <strong>SHAP</strong>, so the system can say <em>why</em> a particular applicant was scored the way they were — which is exactly what you need to generate a compliant adverse-action notice.</p>
-<h2>Compliance is the feature</h2>
+<p>The risk model is an XGBoost classifier trained on the real <strong>307K-row Home Credit dataset</strong> (184,506 train / 61,502 validation / 61,503 final test), reaching a form-input final-test <strong>ROC-AUC of 0.7459</strong>. Every individual decision is attributed with <strong>SHAP</strong>, so the system can say <em>why</em> a particular applicant was scored the way they were — evidence that supports preparation of a draft adverse-action notice for qualified review.</p>
+<p>Full-history final-test ROC-AUC is 0.7803; imputing history gives 0.7546; using only the actual form fields gives 0.7459. Scores remain uncalibrated. These input regimes are evaluated separately.</p><h2>Evidence for human review</h2>
 <h3>Adverse-action notices from SHAP</h3>
-<p>Under ECOA / the CFPB, a denied applicant is owed specific reasons. CredAgent generates those <strong>directly from the SHAP attributions</strong> — the top contributing factors become the notice — so the explanation a regulator sees is the same signal the model actually used.</p>
+<p>Under ECOA / the CFPB, a denied applicant is owed specific reasons. CredAgent generates those <strong>directly from the SHAP attributions</strong> — the top contributing factors become the notice — as an input to a draft notice. Qualified review is still needed; SHAP attribution alone does not certify compliance.</p>
 <h3>RAG over CFPB policy</h3>
 <p>The Policy Compliance agent grounds its checks in real regulatory text using a retrieval step over a <strong>ChromaDB</strong> index of CFPB material, rather than relying on the LLM's memory. The decision cites policy it actually retrieved.</p>
 <h3>Fair-lending testing, kept separate from scoring</h3>
